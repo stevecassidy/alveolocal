@@ -1,0 +1,38 @@
+@prefix arta: <http://ns.ausnc.org.au/schemas/annotation/art/> .
+@prefix cooeea: <http://ns.ausnc.org.au/schemas/annotation/cooee/> .
+@prefix dada: <http://purl.org/dada/schema/0.2#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/242> a dada:Annotation;
+    dada:label "and";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/1d80535f-1ec8-4d66-b8bd-733707942493>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/242L>;
+    dada:type arta:correction .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/243> a dada:Annotation;
+    dada:label "51";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/1d80535f-1ec8-4d66-b8bd-733707942493>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/243L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/244> a dada:Annotation;
+    dada:label "the Nepean";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/1d80535f-1ec8-4d66-b8bd-733707942493>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/244L>;
+    dada:type arta:correction .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/242L> a dada:UTF8Region;
+    dada:end 262;
+    dada:start 262 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/243L> a dada:UTF8Region;
+    dada:end 329;
+    dada:start 329 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/244L> a dada:UTF8Region;
+    dada:end 1227;
+    dada:start 1227 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/1d80535f-1ec8-4d66-b8bd-733707942493> a dada:AnnotationCollection;
+    dada:annotates <http://ns.ausnc.org.au/corpora/cooee/items/1-017> .
+

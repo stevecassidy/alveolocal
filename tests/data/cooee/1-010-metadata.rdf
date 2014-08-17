@@ -1,0 +1,65 @@
+@prefix ausnc: <http://ns.ausnc.org.au/schemas/ausnc_md_model/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix cooee: <http://ns.ausnc.org.au/schemas/cooee/> .
+@prefix corpus: <http://ns.ausnc.org.au/corpora/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix hcsvlab: <http://hcsvlab.org/vocabulary/> .
+@prefix olac: <http://www.language-archives.org/OLAC/1.1/> .
+@prefix schema: <http://ns.ausnc.org.au/schemas/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ns.ausnc.org.au/corpora/cooee/items/1-010> a ausnc:AusNCObject;
+    hcsvlab:display_document <http://ns.ausnc.org.au/corpora/cooee/source/1-010#Text>;
+    hcsvlab:indexable_document <http://ns.ausnc.org.au/corpora/cooee/source/1-010#Text>;
+    ausnc:discourse_type ausnc:letter;
+    ausnc:document <http://ns.ausnc.org.au/corpora/cooee/source/1-010#Original>,
+        <http://ns.ausnc.org.au/corpora/cooee/source/1-010#Text>;
+    ausnc:itemwordcount 1187;
+    cooee:register "Private Written";
+    cooee:texttype "Private Correspondence";
+    schema:localityName dbpedia:New_South_Wales;
+    dc:created "1788";
+    dc:identifier "1-010";
+    dc:isPartOf corpus:cooee;
+    dc:source "Irvine, 1988";
+    bibo:pages "65-67";
+    olac:language "eng";
+    olac:speaker <http://ns.ausnc.org.au/corpora/cooee/person/1-010addressee>,
+        <http://ns.ausnc.org.au/corpora/cooee/person/1-010author> .
+
+<http://ns.ausnc.org.au/corpora/cooee/person/1-010addressee> a foaf:Person;
+    ausnc:id "1-010addressee";
+    ausnc:role "addressee";
+    cooee:status "Lower Middle Class: free settlers with little education";
+    bio:place dbpedia:England;
+    foaf:gender "family" .
+
+<http://ns.ausnc.org.au/corpora/cooee/person/1-010author> a foaf:Person;
+    ausnc:id "1-010author";
+    ausnc:role "author";
+    cooee:abode "0";
+    cooee:arrival "1788";
+    cooee:status "Lower Middle Class: free settlers with little education";
+    bio:birth "176X";
+    bio:place dbpedia:England;
+    foaf:age "23";
+    foaf:gender "male";
+    foaf:name "Fowell, Newton" .
+
+<http://ns.ausnc.org.au/corpora/cooee/source/1-010#Original> a foaf:Document;
+    dc:extent 6244;
+    dc:identifier "1-010.txt";
+    dc:source <http://localhost:3000/cooee/1-010.txt>;
+    dc:title "1-010#Original";
+    dc:type "Original" .
+
+<http://ns.ausnc.org.au/corpora/cooee/source/1-010#Text> a foaf:Document;
+    dc:extent 6072;
+    dc:identifier "1-010-plain.txt";
+    dc:source <http://localhost:3000/cooee/1-010-plain.txt>;
+    dc:title "1-010#Text";
+    dc:type "Text" .
+

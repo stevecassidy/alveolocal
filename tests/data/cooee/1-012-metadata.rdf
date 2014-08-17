@@ -1,0 +1,65 @@
+@prefix ausnc: <http://ns.ausnc.org.au/schemas/ausnc_md_model/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix cooee: <http://ns.ausnc.org.au/schemas/cooee/> .
+@prefix corpus: <http://ns.ausnc.org.au/corpora/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix hcsvlab: <http://hcsvlab.org/vocabulary/> .
+@prefix olac: <http://www.language-archives.org/OLAC/1.1/> .
+@prefix schema: <http://ns.ausnc.org.au/schemas/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ns.ausnc.org.au/corpora/cooee/items/1-012> a ausnc:AusNCObject;
+    hcsvlab:display_document <http://ns.ausnc.org.au/corpora/cooee/source/1-012#Text>;
+    hcsvlab:indexable_document <http://ns.ausnc.org.au/corpora/cooee/source/1-012#Text>;
+    ausnc:discourse_type ausnc:letter;
+    ausnc:document <http://ns.ausnc.org.au/corpora/cooee/source/1-012#Original>,
+        <http://ns.ausnc.org.au/corpora/cooee/source/1-012#Text>;
+    ausnc:itemwordcount 426;
+    cooee:register "Private Written";
+    cooee:texttype "Private Correspondence";
+    schema:localityName dbpedia:New_South_Wales;
+    dc:created "1788";
+    dc:identifier "1-012";
+    dc:isPartOf corpus:cooee;
+    dc:source "Clarke, 1992";
+    bibo:pages "3-4";
+    olac:language "eng";
+    olac:speaker <http://ns.ausnc.org.au/corpora/cooee/person/1-012addressee>,
+        <http://ns.ausnc.org.au/corpora/cooee/person/1-012author> .
+
+<http://ns.ausnc.org.au/corpora/cooee/person/1-012addressee> a foaf:Person;
+    ausnc:id "1-012addressee";
+    ausnc:role "addressee";
+    cooee:status "Lower Class: convicts, labourers, uneducated people, servants";
+    bio:place dbpedia:England;
+    foaf:gender "family" .
+
+<http://ns.ausnc.org.au/corpora/cooee/person/1-012author> a foaf:Person;
+    ausnc:id "1-012author";
+    ausnc:role "author";
+    cooee:abode "0";
+    cooee:arrival "1788";
+    cooee:status "Lower Class: convicts, labourers, uneducated people, servants";
+    bio:birth "?";
+    bio:place dbpedia:Great_Britain;
+    foaf:age "un";
+    foaf:gender "female";
+    foaf:name "Convict Woman" .
+
+<http://ns.ausnc.org.au/corpora/cooee/source/1-012#Original> a foaf:Document;
+    dc:extent 2556;
+    dc:identifier "1-012.txt";
+    dc:source <http://localhost:3000/cooee/1-012.txt>;
+    dc:title "1-012#Original";
+    dc:type "Original" .
+
+<http://ns.ausnc.org.au/corpora/cooee/source/1-012#Text> a foaf:Document;
+    dc:extent 2394;
+    dc:identifier "1-012-plain.txt";
+    dc:source <http://localhost:3000/cooee/1-012-plain.txt>;
+    dc:title "1-012#Text";
+    dc:type "Text" .
+

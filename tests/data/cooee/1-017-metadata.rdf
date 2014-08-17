@@ -1,0 +1,65 @@
+@prefix ausnc: <http://ns.ausnc.org.au/schemas/ausnc_md_model/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix cooee: <http://ns.ausnc.org.au/schemas/cooee/> .
+@prefix corpus: <http://ns.ausnc.org.au/corpora/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix hcsvlab: <http://hcsvlab.org/vocabulary/> .
+@prefix olac: <http://www.language-archives.org/OLAC/1.1/> .
+@prefix schema: <http://ns.ausnc.org.au/schemas/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ns.ausnc.org.au/corpora/cooee/items/1-017> a ausnc:AusNCObject;
+    hcsvlab:display_document <http://ns.ausnc.org.au/corpora/cooee/source/1-017#Text>;
+    hcsvlab:indexable_document <http://ns.ausnc.org.au/corpora/cooee/source/1-017#Text>;
+    ausnc:discourse_type ausnc:letter;
+    ausnc:document <http://ns.ausnc.org.au/corpora/cooee/source/1-017#Original>,
+        <http://ns.ausnc.org.au/corpora/cooee/source/1-017#Text>;
+    ausnc:itemwordcount 341;
+    cooee:register "Private Written";
+    cooee:texttype "Private Correspondence";
+    schema:localityName dbpedia:New_South_Wales;
+    dc:created "1790";
+    dc:identifier "1-017";
+    dc:isPartOf corpus:cooee;
+    dc:source "Clark, 1977";
+    bibo:pages "50-51";
+    olac:language "eng";
+    olac:speaker <http://ns.ausnc.org.au/corpora/cooee/person/1-017addressee>,
+        <http://ns.ausnc.org.au/corpora/cooee/person/1-017author> .
+
+<http://ns.ausnc.org.au/corpora/cooee/person/1-017addressee> a foaf:Person;
+    ausnc:id "1-017addressee";
+    ausnc:role "addressee";
+    cooee:status "Lower Middle Class: free settlers with little education";
+    bio:place dbpedia:England;
+    foaf:gender "male" .
+
+<http://ns.ausnc.org.au/corpora/cooee/person/1-017author> a foaf:Person;
+    ausnc:id "1-017author";
+    ausnc:role "author";
+    cooee:abode "2";
+    cooee:arrival "1788";
+    cooee:status "Lower Middle Class: free settlers with little education";
+    bio:birth "?";
+    bio:place dbpedia:Great_Britain;
+    foaf:age "un";
+    foaf:gender "male";
+    foaf:name "Surgeon's Mate" .
+
+<http://ns.ausnc.org.au/corpora/cooee/source/1-017#Original> a foaf:Document;
+    dc:extent 2061;
+    dc:identifier "1-017.txt";
+    dc:source <http://localhost:3000/cooee/1-017.txt>;
+    dc:title "1-017#Original";
+    dc:type "Original" .
+
+<http://ns.ausnc.org.au/corpora/cooee/source/1-017#Text> a foaf:Document;
+    dc:extent 1886;
+    dc:identifier "1-017-plain.txt";
+    dc:source <http://localhost:3000/cooee/1-017-plain.txt>;
+    dc:title "1-017#Text";
+    dc:type "Text" .
+

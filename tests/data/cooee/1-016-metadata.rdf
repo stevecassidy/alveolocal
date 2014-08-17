@@ -1,0 +1,64 @@
+@prefix ausnc: <http://ns.ausnc.org.au/schemas/ausnc_md_model/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix cooee: <http://ns.ausnc.org.au/schemas/cooee/> .
+@prefix corpus: <http://ns.ausnc.org.au/corpora/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix hcsvlab: <http://hcsvlab.org/vocabulary/> .
+@prefix olac: <http://www.language-archives.org/OLAC/1.1/> .
+@prefix schema: <http://ns.ausnc.org.au/schemas/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ns.ausnc.org.au/corpora/cooee/items/1-016> a ausnc:AusNCObject;
+    hcsvlab:display_document <http://ns.ausnc.org.au/corpora/cooee/source/1-016#Text>;
+    hcsvlab:indexable_document <http://ns.ausnc.org.au/corpora/cooee/source/1-016#Text>;
+    ausnc:discourse_type olac:narrative;
+    ausnc:document <http://ns.ausnc.org.au/corpora/cooee/source/1-016#Original>,
+        <http://ns.ausnc.org.au/corpora/cooee/source/1-016#Text>;
+    ausnc:itemwordcount 11337;
+    cooee:register "Public Written";
+    cooee:texttype "Memoirs";
+    schema:localityName dbpedia:New_South_Wales;
+    dc:created "1790";
+    dc:identifier "1-016";
+    dc:isPartOf corpus:cooee;
+    dc:source "White, 1790";
+    bibo:pages "127-157";
+    olac:language "eng";
+    olac:speaker <http://ns.ausnc.org.au/corpora/cooee/person/1-016addressee>,
+        <http://ns.ausnc.org.au/corpora/cooee/person/1-016author> .
+
+<http://ns.ausnc.org.au/corpora/cooee/person/1-016addressee> a foaf:Person;
+    ausnc:id "1-016addressee";
+    ausnc:role "addressee";
+    cooee:status "Unknown";
+    bio:place dbpedia:Unknown .
+
+<http://ns.ausnc.org.au/corpora/cooee/person/1-016author> a foaf:Person;
+    ausnc:id "1-016author";
+    ausnc:role "author";
+    cooee:abode "2";
+    cooee:arrival "1788";
+    cooee:status "Upper Middle Class: educated citizens, gentlemen";
+    bio:birth "1758";
+    bio:place dbpedia:Great_Britain;
+    foaf:age "32";
+    foaf:gender "male";
+    foaf:name "White, John*" .
+
+<http://ns.ausnc.org.au/corpora/cooee/source/1-016#Original> a foaf:Document;
+    dc:extent 63024;
+    dc:identifier "1-016.txt";
+    dc:source <http://localhost:3000/cooee/1-016.txt>;
+    dc:title "1-016#Original";
+    dc:type "Original" .
+
+<http://ns.ausnc.org.au/corpora/cooee/source/1-016#Text> a foaf:Document;
+    dc:extent 62507;
+    dc:identifier "1-016-plain.txt";
+    dc:source <http://localhost:3000/cooee/1-016-plain.txt>;
+    dc:title "1-016#Text";
+    dc:type "Text" .
+

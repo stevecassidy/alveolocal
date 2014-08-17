@@ -1,0 +1,928 @@
+@prefix arta: <http://ns.ausnc.org.au/schemas/annotation/art/> .
+@prefix cooeea: <http://ns.ausnc.org.au/schemas/annotation/cooee/> .
+@prefix dada: <http://purl.org/dada/schema/0.2#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/100> a dada:Annotation;
+    dada:label "77";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/100L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/101> a dada:Annotation;
+    dada:label "78";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/101L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/102> a dada:Annotation;
+    dada:label "79";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/102L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/103> a dada:Annotation;
+    dada:label "80";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/103L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/104> a dada:Annotation;
+    dada:label "81";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/104L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/105> a dada:Annotation;
+    dada:label "82";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/105L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/106> a dada:Annotation;
+    dada:label "83";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/106L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/107> a dada:Annotation;
+    dada:label "84";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/107L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/108> a dada:Annotation;
+    dada:label "85";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/108L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/109> a dada:Annotation;
+    dada:label "86";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/109L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/110> a dada:Annotation;
+    dada:label "87";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/110L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/111> a dada:Annotation;
+    dada:label "88";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/111L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/112> a dada:Annotation;
+    dada:label "89";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/112L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/113> a dada:Annotation;
+    dada:label "90";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/113L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/114> a dada:Annotation;
+    dada:label "91";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/114L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/115> a dada:Annotation;
+    dada:label "92";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/115L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/116> a dada:Annotation;
+    dada:label "93";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/116L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/117> a dada:Annotation;
+    dada:label "94";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/117L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/118> a dada:Annotation;
+    dada:label "95";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/118L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/119> a dada:Annotation;
+    dada:label "96";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/119L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/120> a dada:Annotation;
+    dada:label "97";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/120L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/121> a dada:Annotation;
+    dada:label "98";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/121L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/122> a dada:Annotation;
+    dada:label "99";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/122L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/123> a dada:Annotation;
+    dada:label "100";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/123L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/124> a dada:Annotation;
+    dada:label "101";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/124L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/125> a dada:Annotation;
+    dada:label "102";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/125L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/126> a dada:Annotation;
+    dada:label "103";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/126L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/127> a dada:Annotation;
+    dada:label "104";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/127L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/128> a dada:Annotation;
+    dada:label "105";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/128L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/129> a dada:Annotation;
+    dada:label "106";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/129L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/130> a dada:Annotation;
+    dada:label "107";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/130L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/131> a dada:Annotation;
+    dada:label "108";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/131L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/132> a dada:Annotation;
+    dada:label "109";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/132L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/133> a dada:Annotation;
+    dada:label "110";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/133L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/134> a dada:Annotation;
+    dada:label "111";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/134L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/135> a dada:Annotation;
+    dada:label "June";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/135L>;
+    dada:type arta:correction .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/136> a dada:Annotation;
+    dada:label "112";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/136L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/137> a dada:Annotation;
+    dada:label "113";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/137L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/138> a dada:Annotation;
+    dada:label "114";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/138L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/139> a dada:Annotation;
+    dada:label "115";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/139L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/140> a dada:Annotation;
+    dada:label "116";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/140L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/141> a dada:Annotation;
+    dada:label "117";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/141L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/142> a dada:Annotation;
+    dada:label "118";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/142L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/143> a dada:Annotation;
+    dada:label "119";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/143L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/144> a dada:Annotation;
+    dada:label "120";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/144L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/145> a dada:Annotation;
+    dada:label "121";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/145L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/146> a dada:Annotation;
+    dada:label "122";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/146L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/147> a dada:Annotation;
+    dada:label "123";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/147L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/148> a dada:Annotation;
+    dada:label "124";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/148L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/149> a dada:Annotation;
+    dada:label "125";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/149L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/150> a dada:Annotation;
+    dada:label "126";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/150L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/151> a dada:Annotation;
+    dada:label "127";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/151L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/152> a dada:Annotation;
+    dada:label "128";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/152L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/153> a dada:Annotation;
+    dada:label "129";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/153L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/154> a dada:Annotation;
+    dada:label "130";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/154L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/155> a dada:Annotation;
+    dada:label "131";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/155L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/156> a dada:Annotation;
+    dada:label "132";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/156L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/157> a dada:Annotation;
+    dada:label "133";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/157L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/158> a dada:Annotation;
+    dada:label "134";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/158L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/159> a dada:Annotation;
+    dada:label "135";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/159L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/160> a dada:Annotation;
+    dada:label "136";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/160L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/161> a dada:Annotation;
+    dada:label "137";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/161L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/162> a dada:Annotation;
+    dada:label "138";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/162L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/163> a dada:Annotation;
+    dada:label "139";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/163L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/164> a dada:Annotation;
+    dada:label "140";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/164L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/165> a dada:Annotation;
+    dada:label "141";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/165L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/166> a dada:Annotation;
+    dada:label "142";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/166L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/167> a dada:Annotation;
+    dada:label "143";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/167L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/168> a dada:Annotation;
+    dada:label "144";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/168L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/169> a dada:Annotation;
+    dada:label "147";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/169L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/170> a dada:Annotation;
+    dada:label "148";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/170L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/79> a dada:Annotation;
+    dada:label "57";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/79L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/80> a dada:Annotation;
+    dada:label "58";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/80L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/81> a dada:Annotation;
+    dada:label "59";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/81L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/82> a dada:Annotation;
+    dada:label "60";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/82L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/83> a dada:Annotation;
+    dada:label "61";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/83L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/84> a dada:Annotation;
+    dada:label "62";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/84L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/85> a dada:Annotation;
+    dada:label "63";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/85L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/86> a dada:Annotation;
+    dada:label "64";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/86L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/87> a dada:Annotation;
+    dada:label "65";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/87L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/88> a dada:Annotation;
+    dada:label "66";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/88L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/89> a dada:Annotation;
+    dada:label "67";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/89L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/90> a dada:Annotation;
+    dada:label "68";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/90L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/91> a dada:Annotation;
+    dada:label "69";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/91L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/92> a dada:Annotation;
+    dada:label "70";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/92L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/93> a dada:Annotation;
+    dada:label "71";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/93L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/94> a dada:Annotation;
+    dada:label "72";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/94L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/95> a dada:Annotation;
+    dada:label "February";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/95L>;
+    dada:type arta:correction .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/96> a dada:Annotation;
+    dada:label "73";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/96L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/97> a dada:Annotation;
+    dada:label "74";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/97L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/98> a dada:Annotation;
+    dada:label "75";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/98L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/99> a dada:Annotation;
+    dada:label "76";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/99L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/100L> a dada:UTF8Region;
+    dada:end 18725;
+    dada:start 18725 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/101L> a dada:UTF8Region;
+    dada:end 20600;
+    dada:start 20600 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/102L> a dada:UTF8Region;
+    dada:end 21208;
+    dada:start 21208 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/103L> a dada:UTF8Region;
+    dada:end 21792;
+    dada:start 21792 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/104L> a dada:UTF8Region;
+    dada:end 23654;
+    dada:start 23654 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/105L> a dada:UTF8Region;
+    dada:end 24115;
+    dada:start 24115 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/106L> a dada:UTF8Region;
+    dada:end 24889;
+    dada:start 24889 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/107L> a dada:UTF8Region;
+    dada:end 27553;
+    dada:start 27553 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/108L> a dada:UTF8Region;
+    dada:end 27553;
+    dada:start 27553 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/109L> a dada:UTF8Region;
+    dada:end 29778;
+    dada:start 29778 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/110L> a dada:UTF8Region;
+    dada:end 29778;
+    dada:start 29778 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/111L> a dada:UTF8Region;
+    dada:end 30310;
+    dada:start 30310 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/112L> a dada:UTF8Region;
+    dada:end 31552;
+    dada:start 31552 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/113L> a dada:UTF8Region;
+    dada:end 32341;
+    dada:start 32341 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/114L> a dada:UTF8Region;
+    dada:end 34450;
+    dada:start 34450 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/115L> a dada:UTF8Region;
+    dada:end 34450;
+    dada:start 34450 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/116L> a dada:UTF8Region;
+    dada:end 35625;
+    dada:start 35625 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/117L> a dada:UTF8Region;
+    dada:end 36874;
+    dada:start 36874 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/118L> a dada:UTF8Region;
+    dada:end 36874;
+    dada:start 36874 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/119L> a dada:UTF8Region;
+    dada:end 37886;
+    dada:start 37886 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/120L> a dada:UTF8Region;
+    dada:end 38843;
+    dada:start 38843 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/121L> a dada:UTF8Region;
+    dada:end 39689;
+    dada:start 39689 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/122L> a dada:UTF8Region;
+    dada:end 40626;
+    dada:start 40626 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/123L> a dada:UTF8Region;
+    dada:end 41639;
+    dada:start 41639 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/124L> a dada:UTF8Region;
+    dada:end 42601;
+    dada:start 42601 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/125L> a dada:UTF8Region;
+    dada:end 43140;
+    dada:start 43140 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/126L> a dada:UTF8Region;
+    dada:end 44532;
+    dada:start 44532 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/127L> a dada:UTF8Region;
+    dada:end 45384;
+    dada:start 45384 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/128L> a dada:UTF8Region;
+    dada:end 47439;
+    dada:start 47439 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/129L> a dada:UTF8Region;
+    dada:end 47439;
+    dada:start 47439 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/130L> a dada:UTF8Region;
+    dada:end 48462;
+    dada:start 48462 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/131L> a dada:UTF8Region;
+    dada:end 49443;
+    dada:start 49443 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/132L> a dada:UTF8Region;
+    dada:end 49443;
+    dada:start 49443 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/133L> a dada:UTF8Region;
+    dada:end 50325;
+    dada:start 50325 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/134L> a dada:UTF8Region;
+    dada:end 51202;
+    dada:start 51202 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/135L> a dada:UTF8Region;
+    dada:end 51219;
+    dada:start 51219 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/136L> a dada:UTF8Region;
+    dada:end 52978;
+    dada:start 52978 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/137L> a dada:UTF8Region;
+    dada:end 53860;
+    dada:start 53860 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/138L> a dada:UTF8Region;
+    dada:end 54264;
+    dada:start 54264 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/139L> a dada:UTF8Region;
+    dada:end 55902;
+    dada:start 55902 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/140L> a dada:UTF8Region;
+    dada:end 56377;
+    dada:start 56377 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/141L> a dada:UTF8Region;
+    dada:end 56377;
+    dada:start 56377 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/142L> a dada:UTF8Region;
+    dada:end 57257;
+    dada:start 57257 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/143L> a dada:UTF8Region;
+    dada:end 59161;
+    dada:start 59161 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/144L> a dada:UTF8Region;
+    dada:end 59161;
+    dada:start 59161 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/145L> a dada:UTF8Region;
+    dada:end 60594;
+    dada:start 60594 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/146L> a dada:UTF8Region;
+    dada:end 62130;
+    dada:start 62130 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/147L> a dada:UTF8Region;
+    dada:end 64226;
+    dada:start 64226 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/148L> a dada:UTF8Region;
+    dada:end 64226;
+    dada:start 64226 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/149L> a dada:UTF8Region;
+    dada:end 64573;
+    dada:start 64573 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/150L> a dada:UTF8Region;
+    dada:end 65560;
+    dada:start 65560 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/151L> a dada:UTF8Region;
+    dada:end 66502;
+    dada:start 66502 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/152L> a dada:UTF8Region;
+    dada:end 67372;
+    dada:start 67372 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/153L> a dada:UTF8Region;
+    dada:end 68916;
+    dada:start 68916 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/154L> a dada:UTF8Region;
+    dada:end 69223;
+    dada:start 69223 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/155L> a dada:UTF8Region;
+    dada:end 70470;
+    dada:start 70470 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/156L> a dada:UTF8Region;
+    dada:end 70470;
+    dada:start 70470 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/157L> a dada:UTF8Region;
+    dada:end 71485;
+    dada:start 71485 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/158L> a dada:UTF8Region;
+    dada:end 72456;
+    dada:start 72456 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/159L> a dada:UTF8Region;
+    dada:end 73425;
+    dada:start 73425 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/160L> a dada:UTF8Region;
+    dada:end 75864;
+    dada:start 75864 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/161L> a dada:UTF8Region;
+    dada:end 75864;
+    dada:start 75864 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/162L> a dada:UTF8Region;
+    dada:end 75864;
+    dada:start 75864 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/163L> a dada:UTF8Region;
+    dada:end 77253;
+    dada:start 77253 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/164L> a dada:UTF8Region;
+    dada:end 78057;
+    dada:start 78057 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/165L> a dada:UTF8Region;
+    dada:end 79159;
+    dada:start 79159 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/166L> a dada:UTF8Region;
+    dada:end 80053;
+    dada:start 80053 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/167L> a dada:UTF8Region;
+    dada:end 80917;
+    dada:start 80917 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/168L> a dada:UTF8Region;
+    dada:end 81810;
+    dada:start 81810 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/169L> a dada:UTF8Region;
+    dada:end 81879;
+    dada:start 81879 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/170L> a dada:UTF8Region;
+    dada:end 84116;
+    dada:start 84116 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/79L> a dada:UTF8Region;
+    dada:end 462;
+    dada:start 462 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/80L> a dada:UTF8Region;
+    dada:end 2224;
+    dada:start 2224 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/81L> a dada:UTF8Region;
+    dada:end 2224;
+    dada:start 2224 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/82L> a dada:UTF8Region;
+    dada:end 3032;
+    dada:start 3032 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/83L> a dada:UTF8Region;
+    dada:end 4664;
+    dada:start 4664 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/84L> a dada:UTF8Region;
+    dada:end 5216;
+    dada:start 5216 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/85L> a dada:UTF8Region;
+    dada:end 6316;
+    dada:start 6316 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/86L> a dada:UTF8Region;
+    dada:end 7087;
+    dada:start 7087 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/87L> a dada:UTF8Region;
+    dada:end 7584;
+    dada:start 7584 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/88L> a dada:UTF8Region;
+    dada:end 9636;
+    dada:start 9636 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/89L> a dada:UTF8Region;
+    dada:end 9636;
+    dada:start 9636 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/90L> a dada:UTF8Region;
+    dada:end 11144;
+    dada:start 11144 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/91L> a dada:UTF8Region;
+    dada:end 11577;
+    dada:start 11577 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/92L> a dada:UTF8Region;
+    dada:end 13994;
+    dada:start 13994 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/93L> a dada:UTF8Region;
+    dada:end 13994;
+    dada:start 13994 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/94L> a dada:UTF8Region;
+    dada:end 15231;
+    dada:start 15231 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/95L> a dada:UTF8Region;
+    dada:end 15253;
+    dada:start 15253 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/96L> a dada:UTF8Region;
+    dada:end 16829;
+    dada:start 16829 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/97L> a dada:UTF8Region;
+    dada:end 16829;
+    dada:start 16829 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/98L> a dada:UTF8Region;
+    dada:end 17984;
+    dada:start 17984 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/99L> a dada:UTF8Region;
+    dada:end 17984;
+    dada:start 17984 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/51782cda-569e-4570-abd0-d16ec8340acf> a dada:AnnotationCollection;
+    dada:annotates <http://ns.ausnc.org.au/corpora/cooee/items/1-015> .
+

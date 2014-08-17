@@ -1,0 +1,38 @@
+@prefix arta: <http://ns.ausnc.org.au/schemas/annotation/art/> .
+@prefix cooeea: <http://ns.ausnc.org.au/schemas/annotation/cooee/> .
+@prefix dada: <http://purl.org/dada/schema/0.2#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/15> a dada:Annotation;
+    dada:label "Jan. 1788";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/92fba9a9-6428-4e5d-bec7-93077cd8adcf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/15L>;
+    dada:type arta:correction .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/16> a dada:Annotation;
+    dada:label "66";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/92fba9a9-6428-4e5d-bec7-93077cd8adcf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/16L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/17> a dada:Annotation;
+    dada:label "67";
+    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/92fba9a9-6428-4e5d-bec7-93077cd8adcf>;
+    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/17L>;
+    dada:type cooeea:pageno .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/15L> a dada:UTF8Region;
+    dada:end 177;
+    dada:start 177 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/16L> a dada:UTF8Region;
+    dada:end 2026;
+    dada:start 2026 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/17L> a dada:UTF8Region;
+    dada:end 6069;
+    dada:start 6069 .
+
+<http://ns.ausnc.org.au/corpora/cooee/annotation/92fba9a9-6428-4e5d-bec7-93077cd8adcf> a dada:AnnotationCollection;
+    dada:annotates <http://ns.ausnc.org.au/corpora/cooee/items/1-010> .
+

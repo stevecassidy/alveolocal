@@ -1,0 +1,64 @@
+@prefix ausnc: <http://ns.ausnc.org.au/schemas/ausnc_md_model/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix cooee: <http://ns.ausnc.org.au/schemas/cooee/> .
+@prefix corpus: <http://ns.ausnc.org.au/corpora/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix hcsvlab: <http://hcsvlab.org/vocabulary/> .
+@prefix olac: <http://www.language-archives.org/OLAC/1.1/> .
+@prefix schema: <http://ns.ausnc.org.au/schemas/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ns.ausnc.org.au/corpora/cooee/items/1-015> a ausnc:AusNCObject;
+    hcsvlab:display_document <http://ns.ausnc.org.au/corpora/cooee/source/1-015#Text>;
+    hcsvlab:indexable_document <http://ns.ausnc.org.au/corpora/cooee/source/1-015#Text>;
+    ausnc:discourse_type olac:report;
+    ausnc:document <http://ns.ausnc.org.au/corpora/cooee/source/1-015#Original>,
+        <http://ns.ausnc.org.au/corpora/cooee/source/1-015#Text>;
+    ausnc:itemwordcount 14985;
+    cooee:register "Public Written";
+    cooee:texttype "Reports";
+    schema:localityName dbpedia:New_South_Wales;
+    dc:created "1789";
+    dc:identifier "1-015";
+    dc:isPartOf corpus:cooee;
+    dc:source "Tench, 1789";
+    bibo:pages "56-148";
+    olac:language "eng";
+    olac:speaker <http://ns.ausnc.org.au/corpora/cooee/person/1-015addressee>,
+        <http://ns.ausnc.org.au/corpora/cooee/person/1-015author> .
+
+<http://ns.ausnc.org.au/corpora/cooee/person/1-015addressee> a foaf:Person;
+    ausnc:id "1-015addressee";
+    ausnc:role "addressee";
+    cooee:status "Unknown";
+    bio:place dbpedia:Unknown .
+
+<http://ns.ausnc.org.au/corpora/cooee/person/1-015author> a foaf:Person;
+    ausnc:id "1-015author";
+    ausnc:role "author";
+    cooee:abode "1";
+    cooee:arrival "1788";
+    cooee:status "Upper Middle Class: educated citizens, gentlemen";
+    bio:birth "1758";
+    bio:place dbpedia:England;
+    foaf:age "31";
+    foaf:gender "male";
+    foaf:name "Tench, Watkin" .
+
+<http://ns.ausnc.org.au/corpora/cooee/source/1-015#Original> a foaf:Document;
+    dc:extent 86670;
+    dc:identifier "1-015.txt";
+    dc:source <http://localhost:3000/cooee/1-015.txt>;
+    dc:title "1-015#Original";
+    dc:type "Original" .
+
+<http://ns.ausnc.org.au/corpora/cooee/source/1-015#Text> a foaf:Document;
+    dc:extent 86061;
+    dc:identifier "1-015-plain.txt";
+    dc:source <http://localhost:3000/cooee/1-015-plain.txt>;
+    dc:title "1-015#Text";
+    dc:type "Text" .
+
