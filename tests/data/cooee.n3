@@ -1,0 +1,45 @@
+@prefix CORPUS: <http://ns.ausnc.org.au/corpora/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix dcelements: <http://purl.org/dc/elements/1.1/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix cld: <http://purl.org/cld/terms/> .
+@prefix marcrel: <http://www.loc.gov/loc.terms/relators/> .
+
+CORPUS:cooee
+      a dcmitype:Collection ;
+      dcelements:title "Corpus of Oz Early English" ;
+      dc:alternative "COOEE" ;
+      dc:abstract "Material to be included had to meet with a regional and a temporal criterion. The latter required texts to have been produced between 1788 and 1900 in order to become eligible for COOEE. It was mandatory for a text to have been written in Australia, New Zealand or Norfolk Island. But in a few cases, other localities were allowed. For example, if a person who was a native Australian or who had lived in Australia for a considerable time, wrote a shipboard diary or travelled in other countries." ;
+      dc:extent "2,000,000 words" ;
+      dc:extent "1353 text samples" ;
+      dc:language "eng" ;
+      dc:itemType "XML" ;
+      dc:itemType "text with tags" ;
+      dc:itemFormat "Letters, published materials in book form, historical texts" ;
+      dc:temporal "1788-1900" ;
+      dc:created "2004" ;
+      cld:dateItemsCreated "1788-1900" ;
+      dcelements:creator "Clemens Fritz" ;
+      dcelements:rights "All rights reserved to Clemens Fritz";
+      dc:accessRights "See AusNC Terms of Use" ;
+      marcrel:OWN "None. Individual owner is Clemens Fritz." ;
+      dc:isPartOf CORPUS:ausnc ;
+      .
+
+#      dcelements:identifier "" ;
+#      dc:provenance "" ;
+
+
+#Accrual Method [dc:accrualMethod]
+#Accrual Periodicity [dc:accrualPeriodicity]
+#Accrual Policy [dc:accrualPolicy]
+#Audience [dc:audience]
+#Subject [dcelements:subject]
+#Spatial Coverage [dc:spatial]
+#Is Located At [cld:isLocatedAt]
+#Is Accessed Via [cld:isAccessedVia]
+#Sub-Collection [dc:hasPart]
+#Super-Collection [dc:isPartOf]
+#Catalogue or Index [cld:catalogueOrIndex]
+#Associated Collection [cld:associatedCollection]
+#Associated Publication [dc:isReferencedBy]

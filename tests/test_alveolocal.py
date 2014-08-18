@@ -29,7 +29,7 @@ class TestAlveolocalLoad(unittest.TestCase):
         """we can attach a directory containing RDF files"""
         
         # check the number of triples loaded
-        self.assertEqual(2355, self.api.attach_directory(TEST_DATA))
+        self.assertEqual(2396, self.api.attach_directory(TEST_DATA))
 
 
     def test_version(self):
@@ -55,6 +55,30 @@ class TestAlveolocal(unittest.TestCase):
         
         self.assertEqual(baseurl, self.api._base_url(itemuri))
         
+        
+    def test_get_collections(self):
+        """we can get the list of collections"""
+        
+        collections = self.api.get_collections()
+        
+        self.assertEqual(2, len(collections))
+        self.assertIn('http://ns.ausnc.org.au/corpora/mitcheldelbridge', collections)
+        self.assertIn('http://ns.ausnc.org.au/corpora/cooee', collections)
+        
+    def test_get_collection(self):
+        """We can get the details of a collection"""
+        
+        coluri = 'http://ns.ausnc.org.au/corpora/cooee'
+        
+        meta = self.api.get_collection(coluri)
+        
+        
+        self.assertEqual(coluri, meta['collection_url'])
+        self.assertEqual('COOEE', meta['collection_name'])
+        self.assertEqual(dict, type(meta['metadata']))
+        self.assertEqual('2004', meta['metadata']['dc:created'])
+        
+        
     def test_get_item_lists(self):
         """test retrieval of item lists"""
                 
@@ -77,20 +101,14 @@ class TestAlveolocal(unittest.TestCase):
         for key in ref.keys():
             self.assertIn(key, meta)
         
-        import pprint
-        #pprint.pprint(ref)
-
-       # pprint.pprint(meta)
-        
         for key in ref['alveo:metadata'].keys():
             self.assertIn(key, meta['alveo:metadata'])
-        
         
         # document check
         self.assertEqual(len(ref['alveo:documents']), len(meta['alveo:documents']))
         for doc in meta['alveo:documents']:
             self.assertEqual(str, type(doc[u'alveo:url']))
-            self.assertTrue(doc[u'alveo:url'].startswith('http'))
+            self.assertTrue(doc[u'alveo:url'].startswith('http'), "expected url '%s' to start with http" % doc[u'alveo:url'])
         
     
     def test_get_primary_text(self):
@@ -131,7 +149,24 @@ class TestAlveolocal(unittest.TestCase):
         
 
 
+    def test_search(self):
+        """we can search for items"""
+        
+        query = (('dc:created', '1788'), )
+        
+        items = self.api.search(query)
+        
+        self.assertEqual(5, len(items))
+        self.assertIn('http://ns.ausnc.org.au/corpora/cooee/items/1-011', items)
 
+        query = (('dc:created', '1788'), ('cooee:texttype', 'Private Correspondence'))
+        items = self.api.search(query)
+        
+        self.assertEqual(4, len(items))
+        self.assertNotIn('http://ns.ausnc.org.au/corpora/cooee/items/1-013', items)
+        self.assertIn('http://ns.ausnc.org.au/corpora/cooee/items/1-011', items)
+        
+        
     def tearDown(self):
         pass
 

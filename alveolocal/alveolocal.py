@@ -1,51 +1,72 @@
 # -*- coding: utf-8 -*-
 
-from rdflib import Graph, URIRef
+from rdflib import Graph, URIRef, Literal
 import os
-
-from rdflib.namespace import FOAF, NamespaceManager
 
 from namespaces import *
 
+
 class API(object):
     """The Alveo API"""
-    
-    base_url = "http://localhost:3000/" 
-    
+
+    base_url = "http://localhost:3000/"
+
     def attach_directory(self, dirname):
         """Attach to a directory containing RDF files
         and deliver data from there"""
-        
-        
+
         self.graph = Graph()
         self.basedir = dirname
-        
+
         for dirpath, dirnames, filenames in os.walk(dirname):
             
             for filename in filenames:
                 if filename.endswith(".rdf"):
                     self.graph.parse(os.path.join(dirpath, filename), format='turtle')
-                    
+                elif filename.endswith(".n3"):
+                    self.graph.parse(os.path.join(dirpath, filename), format='n3')
+
         return len(self.graph)
-        
-    
+
     def version(self):
         """Return the current API version string"""
-        
+
         return "V2.0"
+
+    def get_collections(self):
+        """Return a list of collections in the store"""
+
+        result = []
+        for collectionuri in self.graph.subjects(RDF.type, DCMITYPE.Collection):
+            result.append(str(collectionuri))
+
+        return result
         
         
+    def get_collection(self, collectionid):
+        """Return the collection metadata for this collection"""
+        
+        meta = dict()
+        for s,p,o in self.graph.triples((URIRef(collectionid), None, None)):
+            meta[p.n3(self.graph.namespace_manager)] = o.toPython()
+        
+        name = self.graph.value(URIRef(collectionid), DC.alternative).toPython()
+        return {'collection_url': collectionid,
+                'collection_name': name,
+                'metadata': meta,
+                }
+
     def get_item_lists(self):
         """Return a list of currently defined item lists"""
-        
+
         return []
-        
+
     def _corpus_name(self, itemid):
         """Return the name of the corpus this item is part of"""
-    
+
         corpusuri = self.graph.value(subject=URIRef(itemid), predicate=DC.isPartOf)
         return os.path.basename(corpusuri)
-    
+
     def _base_url(self, itemid):
         """Return the base URL for this itemid"""
         
@@ -61,13 +82,13 @@ class API(object):
         base = self._base_url(itemid)
         return os.path.join(base, "annotations.json")
         
-    
+
     def _primary_text_url(self, itemid):
         """Return the primary text URL for this itemid"""
-        
+
         base = self._base_url(itemid)
         return os.path.join(base, "primary_text.json")      
-    
+
     def get_item_metadata(self, itemid):
         """Return all metadata for the given item identifier as a
         dictionary"""
@@ -97,7 +118,7 @@ class API(object):
                          u'ausnc:mode',
                          u'alveo:date_group',
                          u'alveo:full_text',
-                         u'dc:extent',
+                         u'dcterms:extent',
                          u'alveo:indexable_document',
                          u'alveo:sparqlEndpoint'
                          
@@ -118,10 +139,10 @@ class API(object):
             dm = self._document_metadata(o)
             meta[u'alveo:documents'].append(dm)
             
-            types.append(str(dm[u'dc:type']))
-            docs.append(str(dm[u'dc:title']))
+            types.append(str(dm[u'dcterms:type']))
+            docs.append(str(dm[u'dcterms:title']))
                     
-        meta[u'alveo:metadata'][u'dc:type'] = ', '.join(types)
+        meta[u'alveo:metadata'][u'dcterms:type'] = ', '.join(types)
         meta[u'alveo:metadata'][u'ausnc:document'] = ', '.join(docs)
         
         return meta
@@ -134,10 +155,10 @@ class API(object):
         meta = {
              u'alveo:size': u'',
              u'alveo:url': u'',
-             u'dc:extent': u'',
-             u'dc:identifier': u'',
-             u'dc:title': u'',
-             u'dc:type': u'',
+             u'dcterms:extent': u'',
+             u'dcterms:identifier': u'',
+             u'dcterms:title': u'',
+             u'dcterms:type': u'',
              u'rdf:type': u'http://xmlns.com/foaf/0.1/Document',
         }
         for s,p,o in self.graph.triples((docuri, None, None)):
@@ -166,11 +187,10 @@ class API(object):
         docuri = self.graph.value(subject=URIRef(itemid), predicate=HCSVLAB.indexable_document)
         source = self.graph.value(subject=docuri, predicate=DC.source)
         
-        if docuri == None:
+        if docuri is None:
             return None
         
-        return str(source)      
-        
+        return str(source)
         
         
     def get_primary_text(self, itemid):
@@ -179,7 +199,7 @@ class API(object):
         # get the display document
         source = self._get_display_document_url(itemid)
         
-        if source == None:
+        if source is None:
             return None
         
         # locate it in local storage
@@ -220,14 +240,14 @@ class API(object):
                 ann['end'] = self.graph.value(subject=region, predicate=DADA.end).toPython()
                 
                 atype = self.graph.value(subject=region, predicate=RDF.type)
-                if atype==DADA.UTF8Region:
+                if atype == DADA.UTF8Region:
                     ann['@type'] = 'dada:TextAnnotation'
-                elif atype==DADA.SecondRegion:
+                elif atype == DADA.SecondRegion:
                     ann['@type'] = 'dada:SecondAnnotation'
                 
                 
                 for s,p,o in self.graph.triples((annid, None, None)):
-                    if not p in [DADA.label, DADA.type, DADA.targets, RDF.type, DADA.partof]:
+                    if p not in [DADA.label, DADA.type, DADA.targets, RDF.type, DADA.partof]:
                         ann[p.n3(self.graph.namespace_manager)] = o.toPython()
                 
                 
@@ -238,4 +258,35 @@ class API(object):
         
         return result
         
+    
+    def _denamespace(self, qname):
+        """Return the full url for qname according to the graph prefixes"""
+    
+        for ns in self.graph.namespace_manager.namespaces():
+            if qname.startswith(ns[0]):
+                suffix = qname.split(':')[1]
+                return URIRef(ns[1] + suffix)
+        
+        return qname
+    
+    
+    def search(self, query):
+        """Search for items using the query, 
+        query is a sequence of property, values tuples eg. (('dc:created', '1788'),)
+        Return a list of item identifiers that match the queries."""
+        
+        result = []
+        for pred, value in query:
+            partial = set()
+            for obj in self.graph.subjects(self._denamespace(pred), Literal(value)):
+                partial.add(obj)
+                
+            if len(result) == 0:
+                result = partial
+            else:
+                result = result.intersection(partial)
+                
+        return [str(i) for i in result]
+    
+    
         

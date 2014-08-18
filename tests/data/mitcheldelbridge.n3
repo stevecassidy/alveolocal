@@ -1,0 +1,50 @@
+@prefix CORPUS: <http://ns.ausnc.org.au/corpora/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix dcelements: <http://purl.org/dc/elements/1.1/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix cld: <http://purl.org/cld/terms/> .
+@prefix marcrel: <http://www.loc.gov/loc.terms/relators/> .
+
+CORPUS:mitcheldelbridge
+      a dcmitype:Collection ;
+      dcelements:title "Mitchell and Delbridge Database" ;
+      dc:alternative "M&D" ;
+      dc:abstract "The Mitchell and Delbridge database contains recordings of Australian English as spoken by 7736 students at 330 schools across Australia, mostly collected in 1960. The tapes were digitised and reissued as an online database by the University of Sydney in 1997-98." ;
+      dc:extent "Approximately 297 hours of audio" ;
+      dc:language "eng" ;
+      dc:itemType "16khz mono WAV (needs conversion)" ;
+      dc:itemType "html samples" ;
+      dc:itemType "txt samples" ;
+      dc:itemFormat "Audio: Spoken List; Spoken Monologues; Spoken texts/transcript; Written transcriptions of monologues; Text written analysis of student speech; written instructions to research assistants; written records of schools; written records of Value Judgement Survey; written draft of book; written correspondence to schools and institutions; written contact lists; written metadata on master tapes" ;
+      dc:created "1997-1998" ;
+      dcelements:creator "Alex Mitchell, Arthur Delbridge" ;
+      dcelements:custodian "Ross Coleman" ;
+      marcrel:OWN "University of Sydney." ;
+      dcelements:rights "All rights reserved to University of Sydney";
+      dc:accessRights "See AusNC Terms of Use" ;
+      dcelements:subject "2004 - Linguistics" ;
+      dcelements:subject "2003 Language Studies" ;
+      cld:isLocatedAt "University of Sydney, NSW, Australia";
+      dc:isPartOf "The Mitchell and Delbridge Tapes" ;
+      dc:isPartOf "Australian National Corpus - http://www.ausnc.org.au" ;
+      dc:isReferencedBy "Mitchell, A. G. & Delbridge, Arthur, 1965. The pronunciation of English in Australia / by A.G. Mitchell and A.Delbridge  A. & R., Syd. - http://nla.gov.au/nla.cat-vn2427120";
+      dc:isPartOf CORPUS:ausnc ;
+      .
+
+#      dcelements:identifier "" ;
+#      dcterms:provenance "" ;
+
+
+#Accrual Method [dcterms:accrualMethod]
+#Accrual Periodicity [dcterms:accrualPeriodicity]
+#Accrual Policy [dcterms:accrualPolicy]
+#Audience [dcterms:audience]
+#Spatial Coverage [dcterms:spatial]
+#Is Located At [cld:isLocatedAt]
+#Is Accessed Via [cld:isAccessedVia]
+#Sub-Collection [dcterms:hasPart]
+#Super-Collection [dcterms:isPartOf]
+#Catalogue or Index [cld:catalogueOrIndex]
+#Associated Collection [cld:associatedCollection]
+#Associated Publication [dcterms:isReferencedBy]
+
