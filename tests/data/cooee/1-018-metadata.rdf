@@ -2,7 +2,7 @@
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix bio: <http://purl.org/vocab/bio/0.1/> .
 @prefix cooee: <http://ns.ausnc.org.au/schemas/cooee/> .
-@prefix corpus: <http://ns.ausnc.org.au/corpora/> .
+@prefix corpus: <http://localhost:3000/catalog/> .
 @prefix dbpedia: <http://dbpedia.org/resource/> .
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -11,12 +11,12 @@
 @prefix schema: <http://ns.ausnc.org.au/schemas/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://ns.ausnc.org.au/corpora/cooee/items/1-018> a ausnc:AusNCObject;
-    hcsvlab:display_document <http://ns.ausnc.org.au/corpora/cooee/source/1-018#Text>;
-    hcsvlab:indexable_document <http://ns.ausnc.org.au/corpora/cooee/source/1-018#Text>;
+<http://localhost:3000/catalog/cooee/items/1-018> a ausnc:AusNCObject;
+    hcsvlab:display_document <http://localhost:3000/catalog/cooee/source/1-018#Text>;
+    hcsvlab:indexable_document <http://localhost:3000/catalog/cooee/source/1-018#Text>;
     ausnc:discourse_type ausnc:letter;
-    ausnc:document <http://ns.ausnc.org.au/corpora/cooee/source/1-018#Original>,
-        <http://ns.ausnc.org.au/corpora/cooee/source/1-018#Text>;
+    ausnc:document <http://localhost:3000/catalog/cooee/source/1-018#Original>,
+        <http://localhost:3000/catalog/cooee/source/1-018#Text>;
     ausnc:itemwordcount 534;
     cooee:register "Private Written";
     cooee:texttype "Private Correspondence";
@@ -27,17 +27,17 @@
     dc:source "Clark, 1977";
     bibo:pages "53-54";
     olac:language "eng";
-    olac:speaker <http://ns.ausnc.org.au/corpora/cooee/person/1-018addressee>,
-        <http://ns.ausnc.org.au/corpora/cooee/person/1-018author> .
+    olac:speaker <http://localhost:3000/catalog/cooee/person/1-018addressee>,
+        <http://localhost:3000/catalog/cooee/person/1-018author> .
 
-<http://ns.ausnc.org.au/corpora/cooee/person/1-018addressee> a foaf:Person;
+<http://localhost:3000/catalog/cooee/person/1-018addressee> a foaf:Person;
     ausnc:id "1-018addressee";
     ausnc:role "addressee";
     cooee:status "Lower Class: convicts, labourers, uneducated people, servants";
     bio:place dbpedia:England;
     foaf:gender "male" .
 
-<http://ns.ausnc.org.au/corpora/cooee/person/1-018author> a foaf:Person;
+<http://localhost:3000/catalog/cooee/person/1-018author> a foaf:Person;
     ausnc:id "1-018author";
     ausnc:role "author";
     cooee:abode "2";
@@ -49,17 +49,17 @@
     foaf:gender "male";
     foaf:name "Convict" .
 
-<http://ns.ausnc.org.au/corpora/cooee/source/1-018#Original> a foaf:Document;
+<http://localhost:3000/catalog/cooee/source/1-018#Original> a foaf:Document;
     dc:extent 3009;
     dc:identifier "1-018.txt";
-    dc:source <http://localhost:3000/cooee/1-018.txt>;
+    dc:source <http://localhost:3000/documents/cooee/1-018.txt>;
     dc:title "1-018#Original";
     dc:type "Original" .
 
-<http://ns.ausnc.org.au/corpora/cooee/source/1-018#Text> a foaf:Document;
+<http://localhost:3000/catalog/cooee/source/1-018#Text> a foaf:Document;
     dc:extent 2851;
     dc:identifier "1-018-plain.txt";
-    dc:source <http://localhost:3000/cooee/1-018-plain.txt>;
+    dc:source <http://localhost:3000/documents/cooee/1-018-plain.txt>;
     dc:title "1-018#Text";
     dc:type "Text" .
 

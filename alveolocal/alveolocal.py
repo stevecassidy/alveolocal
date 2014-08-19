@@ -70,11 +70,7 @@ class API(object):
     def _base_url(self, itemid):
         """Return the base URL for this itemid"""
         
-        collection = self._corpus_name(itemid)
-        item = self.graph.value(subject=URIRef(itemid), predicate=DC.identifier)
-                
-        
-        return os.path.join(self.base_url, "catalog", collection, item)
+        return itemid
     
     def _annotation_url(self, itemid):
         """Return the annotation URL for this itemid"""
@@ -175,7 +171,7 @@ class API(object):
         """Turn a document URI to a path in the local store"""
         
         if uri.startswith(self.base_url):
-            suffix = uri[len(self.base_url):]
+            suffix = uri[len(self.base_url + "documents/"):]
             return os.path.join(self.basedir, suffix)
         else:
             return uri
@@ -186,7 +182,7 @@ class API(object):
         # get the display document
         docuri = self.graph.value(subject=URIRef(itemid), predicate=HCSVLAB.indexable_document)
         source = self.graph.value(subject=docuri, predicate=DC.source)
-        
+
         if docuri is None:
             return None
         
@@ -262,31 +258,35 @@ class API(object):
     def _denamespace(self, qname):
         """Return the full url for qname according to the graph prefixes"""
     
-        for ns in self.graph.namespace_manager.namespaces():
+        for ns in self.graph.namespaces():
             if qname.startswith(ns[0]):
                 suffix = qname.split(':')[1]
                 return URIRef(ns[1] + suffix)
         
         return qname
-    
+        
     
     def search(self, query):
-        """Search for items using the query, 
-        query is a sequence of property, values tuples eg. (('dc:created', '1788'),)
-        Return a list of item identifiers that match the queries."""
+        """Find items matching a set of query terms. 
+        query is a sequence of tuples (property, value) where
+        property is an RDF property name in prefixed form (eg. 'dc:created')
+        and value is the desired value.  Returns a list of 
+        matching item identifiers"""
         
-        result = []
+        
+        sparql = """SELECT ?item WHERE {
+            ?item rdf:type ausnc:AusNCObject . 
+            %s
+        }"""
+        
+        terms = ""
         for pred, value in query:
-            partial = set()
-            for obj in self.graph.subjects(self._denamespace(pred), Literal(value)):
-                partial.add(obj)
+            terms += "?item %s '%s' .\n" % (pred, value)
+        
+        sparql = sparql % terms
                 
-            if len(result) == 0:
-                result = partial
-            else:
-                result = result.intersection(partial)
-                
-        return [str(i) for i in result]
-    
-    
+        result = self.graph.query(sparql)
+        items = [str(m[0]) for m in result]        
+        
+        return items
         

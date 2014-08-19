@@ -50,7 +50,7 @@ class TestAlveolocal(unittest.TestCase):
     def test_item_base_url(self):
         """generating the right url for an item"""
         
-        itemuri = "http://ns.ausnc.org.au/corpora/cooee/items/1-012"
+        itemuri = "http://localhost:3000/catalog/cooee/1-012"
         baseurl = "http://localhost:3000/catalog/cooee/1-012"
         
         self.assertEqual(baseurl, self.api._base_url(itemuri))
@@ -62,13 +62,13 @@ class TestAlveolocal(unittest.TestCase):
         collections = self.api.get_collections()
         
         self.assertEqual(2, len(collections))
-        self.assertIn('http://ns.ausnc.org.au/corpora/mitcheldelbridge', collections)
-        self.assertIn('http://ns.ausnc.org.au/corpora/cooee', collections)
+        self.assertIn('http://localhost:3000/catalog/mitcheldelbridge', collections)
+        self.assertIn('http://localhost:3000/catalog/cooee', collections)
         
     def test_get_collection(self):
         """We can get the details of a collection"""
         
-        coluri = 'http://ns.ausnc.org.au/corpora/cooee'
+        coluri = 'http://localhost:3000/catalog/cooee'
         
         meta = self.api.get_collection(coluri)
         
@@ -93,7 +93,7 @@ class TestAlveolocal(unittest.TestCase):
         ref = json.load(fp)
         fp.close()
                 
-        itemuri = "http://ns.ausnc.org.au/corpora/cooee/items/1-012"
+        itemuri = "http://localhost:3000/catalog/cooee/items/1-012"
         
         meta = self.api.get_item_metadata(itemuri)
         
@@ -114,7 +114,7 @@ class TestAlveolocal(unittest.TestCase):
     def test_get_primary_text(self):
         """we can return the text of the primary document"""
 
-        itemuri = "http://ns.ausnc.org.au/corpora/cooee/items/1-012"
+        itemuri = "http://localhost:3000/catalog/cooee/items/1-012"
         
         text = self.api.get_primary_text(itemuri)
         
@@ -132,8 +132,8 @@ class TestAlveolocal(unittest.TestCase):
     def test_get_annotations(self):
         """we can get the annotations for an item"""
 
-        itemuri = "http://ns.ausnc.org.au/corpora/cooee/items/1-012"
-        docurl = "http://localhost:3000/cooee/1-012-plain.txt"
+        itemuri = "http://localhost:3000/catalog/cooee/items/1-012"
+        docurl = "http://localhost:3000/documents/cooee/1-012-plain.txt"
 
         ann = self.api.get_annotations(itemuri)
         
@@ -157,14 +157,14 @@ class TestAlveolocal(unittest.TestCase):
         items = self.api.search(query)
         
         self.assertEqual(5, len(items))
-        self.assertIn('http://ns.ausnc.org.au/corpora/cooee/items/1-011', items)
+        self.assertIn('http://localhost:3000/catalog/cooee/items/1-011', items)
 
         query = (('dc:created', '1788'), ('cooee:texttype', 'Private Correspondence'))
         items = self.api.search(query)
         
         self.assertEqual(4, len(items))
-        self.assertNotIn('http://ns.ausnc.org.au/corpora/cooee/items/1-013', items)
-        self.assertIn('http://ns.ausnc.org.au/corpora/cooee/items/1-011', items)
+        self.assertNotIn('http://localhost:3000/catalog/cooee/items/1-013', items)
+        self.assertIn('http://localhost:3000/catalog/cooee/items/1-011', items)
         
         
     def tearDown(self):

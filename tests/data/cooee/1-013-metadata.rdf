@@ -2,7 +2,7 @@
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix bio: <http://purl.org/vocab/bio/0.1/> .
 @prefix cooee: <http://ns.ausnc.org.au/schemas/cooee/> .
-@prefix corpus: <http://ns.ausnc.org.au/corpora/> .
+@prefix corpus: <http://localhost:3000/catalog/> .
 @prefix dbpedia: <http://dbpedia.org/resource/> .
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -11,12 +11,12 @@
 @prefix schema: <http://ns.ausnc.org.au/schemas/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://ns.ausnc.org.au/corpora/cooee/items/1-013> a ausnc:AusNCObject;
-    hcsvlab:display_document <http://ns.ausnc.org.au/corpora/cooee/source/1-013#Text>;
-    hcsvlab:indexable_document <http://ns.ausnc.org.au/corpora/cooee/source/1-013#Text>;
+<http://localhost:3000/catalog/cooee/items/1-013> a ausnc:AusNCObject;
+    hcsvlab:display_document <http://localhost:3000/catalog/cooee/source/1-013#Text>;
+    hcsvlab:indexable_document <http://localhost:3000/catalog/cooee/source/1-013#Text>;
     ausnc:discourse_type olac:report;
-    ausnc:document <http://ns.ausnc.org.au/corpora/cooee/source/1-013#Original>,
-        <http://ns.ausnc.org.au/corpora/cooee/source/1-013#Text>;
+    ausnc:document <http://localhost:3000/catalog/cooee/source/1-013#Original>,
+        <http://localhost:3000/catalog/cooee/source/1-013#Text>;
     ausnc:itemwordcount 1779;
     cooee:register "Public Written";
     cooee:texttype "Reports";
@@ -27,16 +27,16 @@
     dc:source "Ward, 1969";
     bibo:pages "15-18";
     olac:language "eng";
-    olac:speaker <http://ns.ausnc.org.au/corpora/cooee/person/1-013addressee>,
-        <http://ns.ausnc.org.au/corpora/cooee/person/1-013author> .
+    olac:speaker <http://localhost:3000/catalog/cooee/person/1-013addressee>,
+        <http://localhost:3000/catalog/cooee/person/1-013author> .
 
-<http://ns.ausnc.org.au/corpora/cooee/person/1-013addressee> a foaf:Person;
+<http://localhost:3000/catalog/cooee/person/1-013addressee> a foaf:Person;
     ausnc:id "1-013addressee";
     ausnc:role "addressee";
     cooee:status "Unknown";
     bio:place dbpedia:Unknown .
 
-<http://ns.ausnc.org.au/corpora/cooee/person/1-013author> a foaf:Person;
+<http://localhost:3000/catalog/cooee/person/1-013author> a foaf:Person;
     ausnc:id "1-013author";
     ausnc:role "author";
     cooee:abode "0";
@@ -48,17 +48,17 @@
     foaf:gender "male";
     foaf:name "Philip, Arthur" .
 
-<http://ns.ausnc.org.au/corpora/cooee/source/1-013#Original> a foaf:Document;
+<http://localhost:3000/catalog/cooee/source/1-013#Original> a foaf:Document;
     dc:extent 10923;
     dc:identifier "1-013.txt";
-    dc:source <http://localhost:3000/cooee/1-013.txt>;
+    dc:source <http://localhost:3000/documents/cooee/1-013.txt>;
     dc:title "1-013#Original";
     dc:type "Original" .
 
-<http://ns.ausnc.org.au/corpora/cooee/source/1-013#Text> a foaf:Document;
+<http://localhost:3000/catalog/cooee/source/1-013#Text> a foaf:Document;
     dc:extent 10747;
     dc:identifier "1-013-plain.txt";
-    dc:source <http://localhost:3000/cooee/1-013-plain.txt>;
+    dc:source <http://localhost:3000/documents/cooee/1-013-plain.txt>;
     dc:title "1-013#Text";
     dc:type "Text" .
 

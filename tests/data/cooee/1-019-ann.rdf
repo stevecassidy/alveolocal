@@ -3,35 +3,35 @@
 @prefix dada: <http://purl.org/dada/schema/0.2#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://ns.ausnc.org.au/corpora/cooee/annotation/246> a dada:Annotation;
+<http://localhost:3000/catalog/cooee/annotation/246> a dada:Annotation;
     dada:label "wish";
-    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/60529cf7-0a8a-420d-a84b-0ae52cc4f9a2>;
-    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/246L>;
+    dada:partof <http://localhost:3000/catalog/cooee/annotation/7cfba3a0-dbb8-437a-9be0-78c3a7c8c6c6>;
+    dada:targets <http://localhost:3000/catalog/cooee/annotation/246L>;
     dada:type arta:correction .
 
-<http://ns.ausnc.org.au/corpora/cooee/annotation/247> a dada:Annotation;
-    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/60529cf7-0a8a-420d-a84b-0ae52cc4f9a2>;
-    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/247L>;
+<http://localhost:3000/catalog/cooee/annotation/247> a dada:Annotation;
+    dada:partof <http://localhost:3000/catalog/cooee/annotation/7cfba3a0-dbb8-437a-9be0-78c3a7c8c6c6>;
+    dada:targets <http://localhost:3000/catalog/cooee/annotation/247L>;
     dada:type cooeea:ellipsis .
 
-<http://ns.ausnc.org.au/corpora/cooee/annotation/248> a dada:Annotation;
+<http://localhost:3000/catalog/cooee/annotation/248> a dada:Annotation;
     dada:label "55";
-    dada:partof <http://ns.ausnc.org.au/corpora/cooee/annotation/60529cf7-0a8a-420d-a84b-0ae52cc4f9a2>;
-    dada:targets <http://ns.ausnc.org.au/corpora/cooee/annotation/248L>;
+    dada:partof <http://localhost:3000/catalog/cooee/annotation/7cfba3a0-dbb8-437a-9be0-78c3a7c8c6c6>;
+    dada:targets <http://localhost:3000/catalog/cooee/annotation/248L>;
     dada:type cooeea:pageno .
 
-<http://ns.ausnc.org.au/corpora/cooee/annotation/246L> a dada:UTF8Region;
+<http://localhost:3000/catalog/cooee/annotation/246L> a dada:UTF8Region;
     dada:end 552;
     dada:start 552 .
 
-<http://ns.ausnc.org.au/corpora/cooee/annotation/247L> a dada:UTF8Region;
+<http://localhost:3000/catalog/cooee/annotation/247L> a dada:UTF8Region;
     dada:end 1505;
     dada:start 1505 .
 
-<http://ns.ausnc.org.au/corpora/cooee/annotation/248L> a dada:UTF8Region;
+<http://localhost:3000/catalog/cooee/annotation/248L> a dada:UTF8Region;
     dada:end 2327;
     dada:start 2327 .
 
-<http://ns.ausnc.org.au/corpora/cooee/annotation/60529cf7-0a8a-420d-a84b-0ae52cc4f9a2> a dada:AnnotationCollection;
-    dada:annotates <http://ns.ausnc.org.au/corpora/cooee/items/1-019> .
+<http://localhost:3000/catalog/cooee/annotation/7cfba3a0-dbb8-437a-9be0-78c3a7c8c6c6> a dada:AnnotationCollection;
+    dada:annotates <http://localhost:3000/catalog/cooee/items/1-019> .
 

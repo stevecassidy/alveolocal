@@ -1,4 +1,4 @@
-@prefix CORPUS: <http://ns.ausnc.org.au/corpora/> .
+@prefix CORPUS: <http://localhost:3000/catalog/> .
 @prefix dcmitype: <http://purl.org/dc/dcmitype/> .
 @prefix dcelements: <http://purl.org/dc/elements/1.1/> .
 @prefix dc: <http://purl.org/dc/terms/> .
