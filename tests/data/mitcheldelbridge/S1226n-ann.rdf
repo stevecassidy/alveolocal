@@ -1,0 +1,157 @@
+@prefix dada: <http://purl.org/dada/schema/0.2#> .
+@prefix maus: <http://ns.ausnc.org.au/schemas/annotation/maus/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/195> a dada:Annotation;
+    dada:label "#";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/195L>;
+    dada:type maus:orthography .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/196> a dada:Annotation;
+    dada:label "BASINETTE ";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/196L>;
+    dada:type maus:orthography .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/197> a dada:Annotation;
+    dada:label "#";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/197L>;
+    dada:type maus:orthography .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/198> a dada:Annotation;
+    dada:label "#";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/198L>;
+    dada:type maus:canonical .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/199> a dada:Annotation;
+    dada:label "/b{s@net/";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/199L>;
+    dada:type maus:canonical .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/200> a dada:Annotation;
+    dada:label "#";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/200L>;
+    dada:type maus:canonical .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/201> a dada:Annotation;
+    dada:label "#";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/201L>;
+    dada:type maus:phonetic .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/202> a dada:Annotation;
+    dada:label "  b";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/202L>;
+    dada:type maus:phonetic .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/203> a dada:Annotation;
+    dada:label "{";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/203L>;
+    dada:type maus:phonetic .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/204> a dada:Annotation;
+    dada:label "s";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/204L>;
+    dada:type maus:phonetic .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/205> a dada:Annotation;
+    dada:label "@";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/205L>;
+    dada:type maus:phonetic .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/206> a dada:Annotation;
+    dada:label "n";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/206L>;
+    dada:type maus:phonetic .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/207> a dada:Annotation;
+    dada:label "e";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/207L>;
+    dada:type maus:phonetic .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/208> a dada:Annotation;
+    dada:label "t";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/208L>;
+    dada:type maus:phonetic .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/209> a dada:Annotation;
+    dada:label "#";
+    dada:partof <http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d>;
+    dada:targets <http://localhost:3000/catalog/mitcheldelbridge/annotation/209L>;
+    dada:type maus:phonetic .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/195L> a dada:SecondRegion;
+    dada:end "0.665315039758"^^xsd:float;
+    dada:start "0.0"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/196L> a dada:SecondRegion;
+    dada:end "1.29089909068"^^xsd:float;
+    dada:start "0.665315039758"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/197L> a dada:SecondRegion;
+    dada:end "2.04335600907"^^xsd:float;
+    dada:start "1.29089909068"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/198L> a dada:SecondRegion;
+    dada:end "0.665315039758"^^xsd:float;
+    dada:start "0.0"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/199L> a dada:SecondRegion;
+    dada:end "1.29089909068"^^xsd:float;
+    dada:start "0.665315039758"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/200L> a dada:SecondRegion;
+    dada:end "2.04335600907"^^xsd:float;
+    dada:start "1.29089909068"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/201L> a dada:SecondRegion;
+    dada:end "0.665315039758"^^xsd:float;
+    dada:start "0.0"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/202L> a dada:SecondRegion;
+    dada:end "0.682890746256"^^xsd:float;
+    dada:start "0.665315039758"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/203L> a dada:SecondRegion;
+    dada:end "0.783066034125"^^xsd:float;
+    dada:start "0.682890746256"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/204L> a dada:SecondRegion;
+    dada:end "0.906893820519"^^xsd:float;
+    dada:start "0.783066034125"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/205L> a dada:SecondRegion;
+    dada:end "0.947242200355"^^xsd:float;
+    dada:start "0.906893820519"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/206L> a dada:SecondRegion;
+    dada:end "1.00567778494"^^xsd:float;
+    dada:start "0.947242200355"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/207L> a dada:SecondRegion;
+    dada:end "1.15037542298"^^xsd:float;
+    dada:start "1.00567778494"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/208L> a dada:SecondRegion;
+    dada:end "1.29089909068"^^xsd:float;
+    dada:start "1.15037542298"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/209L> a dada:SecondRegion;
+    dada:end "2.04335600907"^^xsd:float;
+    dada:start "1.29089909068"^^xsd:float .
+
+<http://localhost:3000/catalog/mitcheldelbridge/annotation/85c924b9-f4f2-4cc9-a2ee-498afe3add9d> a dada:AnnotationCollection;
+    dada:annotates <http://localhost:3000/catalog/mitcheldelbridge/items/S1226n> .
+

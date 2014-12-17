@@ -1,0 +1,56 @@
+@prefix ausnc: <http://ns.ausnc.org.au/schemas/ausnc_md_model/> .
+@prefix corpus: <http://localhost:3000/catalog/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix olac: <http://www.language-archives.org/OLAC/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://localhost:3000/catalog/mitcheldelbridge/items/S1221n> a ausnc:AusNCObject;
+    ausnc:audience ausnc:individual;
+    ausnc:communication_context ausnc:face_to_face;
+    ausnc:date_of_recording "1959";
+    ausnc:document <http://localhost:3000/catalog/mitcheldelbridge/source/S1221n#Audio>,
+        <http://localhost:3000/catalog/mitcheldelbridge/source/S1221n#TextGrid>;
+    ausnc:fathers_occupations "assistant station master";
+    ausnc:fathers_place_of_birth "Newcastle";
+    ausnc:institute "Quirindi High School";
+    ausnc:interactivity ausnc:read;
+    ausnc:misc "Newcastle";
+    ausnc:mode ausnc:spoken;
+    ausnc:mothers_place_of_birth "Newcastle";
+    ausnc:place "Quirindi";
+    ausnc:place_of_birth "Newcastle";
+    ausnc:recording_environment "narrative & sample1 only";
+    ausnc:sex "m";
+    ausnc:speech_style ausnc:scripted;
+    ausnc:state "NSW";
+    ausnc:tsid "n19a-12";
+    ausnc:uid "1221";
+    dc:identifier "S1221n";
+    dc:isPartOf corpus:mitcheldelbridge;
+    olac:discourse_type olac:interactive_discourse;
+    olac:language "eng";
+    olac:speaker <http://localhost:3000/catalog/mitcheldelbridge/person/S1221n> .
+
+<http://localhost:3000/catalog/mitcheldelbridge/person/S1221n> a foaf:Person;
+    ausnc:birthplace "Newcastle";
+    ausnc:fathers_birthplace "Newcastle";
+    ausnc:fathers_occupation "assistant station master";
+    ausnc:mothers_birthplace "Newcastle";
+    ausnc:state "NSW";
+    foaf:gender "male" .
+
+<http://localhost:3000/catalog/mitcheldelbridge/source/S1221n#Audio> a foaf:Document;
+    dc:extent 5590476;
+    dc:identifier "S1221n.wav";
+    dc:source <http://localhost:3000/documents/mitcheldelbridge/S1221n.wav>;
+    dc:title "S1221n#Audio";
+    dc:type "Audio" .
+
+<http://localhost:3000/catalog/mitcheldelbridge/source/S1221n#TextGrid> a foaf:Document;
+    dc:extent 2480;
+    dc:identifier "S1221n.TextGrid";
+    dc:source <http://localhost:3000/documents/mitcheldelbridge/S1221n.TextGrid>;
+    dc:title "S1221n#TextGrid";
+    dc:type "TextGrid" .
+
