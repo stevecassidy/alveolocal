@@ -29,7 +29,7 @@ class TestAlveolocalLoad(unittest.TestCase):
         """we can attach a directory containing RDF files"""
         
         # check the number of triples loaded
-        self.assertEqual(2396, self.api.attach_directory(TEST_DATA))
+        self.assertEqual(7573, self.api.attach_directory(TEST_DATA))
 
 
     def test_version(self):
