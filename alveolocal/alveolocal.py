@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from rdflib import Graph, URIRef, Literal
 import os
 
-from namespaces import *
-from _collections import defaultdict
+from rdflib import Graph, URIRef
+
+from namespaces import RDF, DCMITYPE, DC, AUSNC, HCSVLAB, DADA
+
 
 class API(object):
     """The Alveo API"""
@@ -55,66 +56,6 @@ class API(object):
                 'collection_name': name,
                 'metadata': meta,
                 }
-
-    def _save_item_list(self, item_list_id, dir_name):
-        """Save an item list into a file in a given directory"""
-        
-        subgraph = Graph()
-        subgraph += self.graph.triples((URIRef(item_list_id), None, None))
-        subgraph += self.graph.triples((None, None, URIRef(item_list_id)))
-        name = self.graph.value(URIRef(item_list_id), Literal("Name")).toPython()
-        subgraph.serialize(os.path.join(dir_name, "%s.n3" % name), format="n3")
-    
-    def create_item_list(self, item_list_id, item_list_name, shared):
-        """Create new item list with the given name"""
-        
-        self.graph.add((URIRef(item_list_id), RDF.type, Literal("itemlist")))
-        self.graph.add((URIRef(item_list_id), Literal("Name"), Literal(item_list_name)))
-        self.graph.add((URIRef(item_list_id), Literal("shared"), Literal(str(shared))))
-        self._save_item_list(item_list_id, self.basedir)
-        
-    def add_to_item_list(self, item_list_id, item_id):
-        """Add an item to an item list"""
-        
-        self.graph.add((URIRef(item_id), DC.isPartOf, URIRef(item_list_id)))
-        self._save_item_list(item_list_id, self.basedir)
-        
-    def get_item_list(self, item_list_id):
-        """Return a given item list"""
-        
-        items = self.graph.subjects(DC.isPartOf, URIRef(item_list_id))
-        items = [s.toPython() for s in items]
-        num = len(items)
-        shared = True
-        if self.graph.value(URIRef(item_list_id), Literal("shared")).toPython() == "False":
-            shared = False
-        output = {
-                  "shared":shared,
-                  "name":self.graph.value(URIRef(item_list_id), Literal("Name")).toPython(),
-                  "num_items":num,
-                  "items":items
-                  }
-        return output
-        
-    def get_item_lists(self):
-        """Return a list of currently defined item lists"""
-        
-        output = {}
-        output["shared"] = []
-        output["own"] = []
-        for item_list_id in self.graph.subjects(RDF.type, Literal("itemlist")):
-            item_list = self.get_item_list(item_list_id.toPython())
-            info = {
-                    "shared":item_list["shared"],
-                    "name":item_list["name"],
-                    "item_list_url":item_list_id.toPython(),
-                    "num_items":item_list["num_items"]
-                    }
-            if item_list["shared"]:
-                output["shared"].append(info)
-            else:
-                output["own"].append(info)
-        return output
 
     def _corpus_name(self, itemid):
         """Return the name of the corpus this item is part of"""
@@ -265,7 +206,7 @@ class API(object):
             text = textfile.read()
         return text
         
-    def get_annotations(self, itemid):
+    def get_annotations(self, itemid, **filters):
         """Return the annotations for this item as a dictionary"""
         
         result = {'@context': "https://app.alveo.edu.au/schema/json-ld",
@@ -300,7 +241,13 @@ class API(object):
                         ann[p.n3(self.graph.namespace_manager)] = o.toPython()
                 
                 
-                anns.append(ann)
+                conditions = []
+                conditions.append("type" not in filters.keys() or URIRef(ann["type"]) == self._denamespace(filters["type"]))
+                conditions.append("label" not in filters.keys() or ann["label"] == filters["label"])
+                conditions.append("start" not in filters.keys() or str(ann["start"]) == filters["start"])
+                conditions.append("end" not in filters.keys() or str(ann["end"]) == filters["end"])
+                if all(conditions):
+                    anns.append(ann)
                 
         result['alveo:annotations'] = anns
         result['commonProperties']['alveo:annotates'] = self._get_display_document_url(itemid)

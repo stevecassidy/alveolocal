@@ -21,6 +21,7 @@ RDFS = Namespace(u"http://www.w3.org/2000/01/rdf-schema#")
 OWL = Namespace(u"http://www.w3.org/2002/07/owl#")
 XSD = Namespace(u"http://www.w3.org/2001/XMLSchema#")
 HCSVLAB = Namespace(u"http://hcsvlab.org/vocabulary/")
+LOCALTERMS = Namespace(u"http://localhost:3000/alveolocal/terms#")
 
 # Namespaces we control
 # SCHEMA is the namespace for all schema

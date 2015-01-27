@@ -2,9 +2,13 @@ from bottle import Bottle, request, abort, response
 from alveolocal import API
 import json
 import os
+from itemlist import ItemListFactory
 
 application = Bottle()
 alveo = API()
+TEST_DATA = os.path.join(os.path.dirname(__file__), "..", "tests", "data")
+factory = ItemListFactory("rdf", os.path.join(TEST_DATA, "itemlists"))
+
 
 @application.route('/version')
 def version():
@@ -30,13 +34,13 @@ def collection(collection_name):
 def itemlists():
     
     response.content_type = 'application/json'
-    return json.dumps(alveo.get_item_lists())
+    return json.dumps(factory.get_item_lists())
     
 @application.route('/item_lists/<itemlist_id>')
 def itemlist(itemlist_id):
     
     response.content_type = 'application/json'
-    return json.dumps(alveo.get_item_list(request.url))
+    return json.dumps(factory.get_item_list(request.url))
 
 @application.route('/catalog/<collection_name>/<item_id>')
 def metadata(collection_name, item_id):
@@ -113,7 +117,7 @@ def search_metadata_sparql(collection_name, sparql_query):
 
 if __name__=='__main__':
     
-    TEST_DATA = os.path.join(os.path.dirname(__file__), "..", "tests", "data")
+    
     
     #alveo = API()
     alveo.attach_directory(TEST_DATA)

@@ -8,14 +8,12 @@ test_alveolocal
 Tests for `alveolocal` module.
 """
 
-import unittest
-import os
 import json 
-
+import os
+import unittest
 
 from alveolocal import API
-from alveolocal.namespaces import RDF, DC
-from rdflib.term import Literal, URIRef
+
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data")
 
@@ -31,7 +29,7 @@ class TestAlveolocalLoad(unittest.TestCase):
         """we can attach a directory containing RDF files"""
         
         # check the number of triples loaded
-        self.assertEqual(7583, self.api.attach_directory(TEST_DATA))
+        self.assertEqual(7576, self.api.attach_directory(TEST_DATA))
 
 
     def test_version(self):
@@ -79,24 +77,6 @@ class TestAlveolocal(unittest.TestCase):
         self.assertEqual('COOEE', meta['collection_name'])
         self.assertEqual(dict, type(meta['metadata']))
         self.assertEqual('2004', meta['metadata']['dc:created'])
-        
-        
-    def test_get_item_lists(self):
-        """test retrieval of item lists"""
-                
-        # get item lists returns a list
-        self.assertEqual(dict, type(self.api.get_item_lists()))
-        
-        self.api.create_item_list("http://localhost:3000/item_lists/1", "first item list", True)
-        self.api.create_item_list("http://localhost:3000/item_lists/2", "second item list", False)
-        
-        self.assertEqual(2, len(self.api.get_item_lists()), "expected 2 itemlists")
-        self.assertEqual(dict, type(self.api.get_item_lists()["shared"][0]), "expected an item list to be a dictionary")
-        content = ["name", "item_list_url", "num_items", "shared"]
-        for c in content:
-            self.assertIn(c, self.api.get_item_lists()["shared"][0], "expected %s to be in the dictionary")
-        self.assertIn(self.api.get_item_lists()["shared"][0]["name"], ["first item list", "second item list"], "expected the name of second item list to be in the list")
-        
 
     def test_get_item_metadata(self):
         """we can get the metadata for an item"""
@@ -177,32 +157,6 @@ class TestAlveolocal(unittest.TestCase):
         self.assertEqual(4, len(items))
         self.assertNotIn('http://localhost:3000/catalog/cooee/items/1-013', items)
         self.assertIn('http://localhost:3000/catalog/cooee/items/1-011', items)
-        
-    def test_create_item_list(self):
-        """we can create item lists"""
-        
-        self.api.create_item_list("http://localhost:3000/item_lists/1", "first item list", True)
-        self.api.create_item_list("http://localhost:3000/item_lists/2", "second item list", False)
-        
-        result = self.api.graph.value(URIRef("http://localhost:3000/item_lists/1"), Literal("Name")).toPython()
-        self.assertEqual(result, "first item list", "expected 'first item list'")
-        
-        result = [s.toPython() for s in self.api.graph.subjects(RDF.type, Literal("itemlist"))]
-        self.assertEqual(2, len(result), "expected 2 itemlist")
-        
-    def test_add_item_to_item_list(self):
-        """we can add items to an item list"""
-        
-        self.api.create_item_list("http://localhost:3000/item_lists/1", "first item list", True)
-        self.api.add_to_item_list("http://localhost:3000/item_lists/1", "http://localhost:3000/catalog/cooee/items/1-010")
-        self.api.add_to_item_list("http://localhost:3000/item_lists/1", "http://localhost:3000/catalog/cooee/items/1-011")
-        self.api.add_to_item_list("http://localhost:3000/item_lists/1", "http://localhost:3000/catalog/cooee/items/1-012")
-        self.api.add_to_item_list("http://localhost:3000/item_lists/1", "http://localhost:3000/catalog/cooee/items/1-013")
-        
-        result = [s.toPython() for s in self.api.graph.subjects(DC.isPartOf, URIRef("http://localhost:3000/item_lists/1"))]
-        self.assertEqual(4, len(result), "expected 4 items in the list")
-        self.assertIn("http://localhost:3000/catalog/cooee/items/1-011", result, "expected to be in the list")
-        self.assertNotIn("http://localhost:3000/catalog/cooee/items/1-015", result, "expected not to be in the list")
         
     def tearDown(self):
         pass
