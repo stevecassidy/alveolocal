@@ -1,0 +1,34 @@
+{
+	"@context":"https://app.alveo.edu.au/schema/json-ld",
+	"commonProperties":{
+							"alveo:annotates":"http://localhost:3000/catalog/cooee/items/1-010"
+						},
+	"alveo:annotations":[
+							{
+								"type":"http://ns.ausnc.org.au/schemas/annotation/cooee/ellipsis",
+								"@type":"dada:TextAnnotation",
+								"end":"1051",
+								"start":"1051"
+							},
+							{
+								"label":"24",
+								"type":"http://ns.ausnc.org.au/schemas/annotation/cooee/pageno",
+								"@type":"dada:TextAnnotation",
+								"end":"1267",
+								"start":"1267"
+							},
+							{
+								"label":"25",
+								"type":"http://ns.ausnc.org.au/schemas/annotation/cooee/pageno",
+								"@type":"dada:TextAnnotation",
+								"end":"3985",
+								"start":"3985"
+							},
+							{
+								"type":"http://ns.ausnc.org.au/schemas/annotation/cooee/ellipsis",
+								"@type":"dada:TextAnnotation",
+								"end":"5316",
+								"start":"5316"
+							}
+						]
+}

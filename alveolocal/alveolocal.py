@@ -3,8 +3,10 @@
 import os
 
 from rdflib import Graph, URIRef
-
 from namespaces import RDF, DCMITYPE, DC, AUSNC, HCSVLAB, DADA
+from uuid import uuid4
+from rdflib.term import Literal
+from namespaces import XSD
 
 
 class API(object):
@@ -330,4 +332,53 @@ class API(object):
         items = [str(m[0]) for m in result]        
         
         return items
+    
+    def search_sparql(self, collection_id, query):
+        output = {"head":{"vars":[]}, "results":{"bindings":[]}}
+        subgraph = Graph()
+        subgraph += self.graph.triples((URIRef(collection_id), None, None))
+        subgraph += self.graph.triples((None, None, URIRef(collection_id)))
+        result = subgraph.query(query)        
+        for var in result.vars:
+            output["head"]["vars"].append(str(var))
+        for binding in result.bindings:
+            temp = {}
+            for var in output["head"]["vars"]:
+                temp[var] = {"type":type(binding[var]).__name__, "value":binding[var].toPython()}
+            output["results"]["bindings"].append(temp)
+        return output
+    
+    def add_annotation(self, filename, collection_id, collection_name, data):
+        g = Graph()
+        g.bind("dada", "http://purl.org/dada/schema/0.2#")
+        ann_coll_id = "%s/annotation/%s" %(collection_id, uuid4())
+        g.add((URIRef(ann_coll_id), RDF.type, DADA.AnnotationCollection))
+        g.add((URIRef(ann_coll_id), DADA.annotates, URIRef(data["commonProperties"]["alveo:annotates"])))
+        for annotation in data["alveo:annotations"]:
+            ann_id = self.generate_annotation_id(collection_id)
+            ann_reg_id = ann_id + "L"
+            g.add((URIRef(ann_id), RDF.type, DADA.Annotation))
+            g.add((URIRef(ann_id), DADA.partof, URIRef(ann_coll_id)))
+            g.add((URIRef(ann_id), DADA.targets, URIRef(ann_reg_id)))
+            if "label" in annotation:
+                g.add((URIRef(ann_id), DADA.label, Literal(annotation["label"])))
+            g.add((URIRef(ann_id), DADA.type, URIRef(annotation["type"])))
+            if annotation["@type"] == "dada:TextAnnotation":
+                g.add((URIRef(ann_reg_id), RDF.type, DADA.UTF8Region))
+            elif annotation["@type"] == "dada:SecondAnnotation":
+                g.add((URIRef(ann_reg_id), RDF.type, DADA.SecondRegion))
+            g.add((URIRef(ann_reg_id), DADA.start, Literal(annotation["start"], datatype=XSD.int)))
+            g.add((URIRef(ann_reg_id), DADA.end, Literal(annotation["end"], datatype=XSD.int)))
+        g.serialize(os.path.join(self.basedir, collection_name, filename+".n3"), format="n3")
+        self.graph += g
+        return {"success":"file %s uploaded successfully" % filename}
+     
+    num = 1000   
+    def generate_annotation_id(self, collection_id):
+        API.num += 1
+        return collection_id + "/annotation/" + str(API.num)
+        
+    
+    
+    
         

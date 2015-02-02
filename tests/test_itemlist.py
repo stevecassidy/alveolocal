@@ -181,6 +181,28 @@ class TestItemList(unittest.TestCase):
             compare = 0
             self.assertEqual(hit, compare, "Expected the size of the list to be %s" % str(compare))
             
+    def test_9_get_item_list_id(self):
+        for method in self.methods:
+            factory = ItemListFactory(method, self.basedir)
+            self.prepare(factory)
+            factory.create_item_list("http://localhost:3000/item_lists/1", "first item list", "shared")
+            
+            hit = factory.get_item_list_id("first item list")
+            compare = "http://localhost:3000/item_lists/1"
+            
+            self.assertEqual(hit, compare, "Expected %s got %s" %(compare, hit))
+            
+    def test_10_rename_item_list(self):
+        for method in self.methods:
+            factory = ItemListFactory(method, self.basedir)
+            self.prepare(factory)
+            factory.create_item_list("http://localhost:3000/item_lists/1", "first item list", "shared")
+            factory.rename_item_list("http://localhost:3000/item_lists/1", "this is a new name")
+            
+            hit = factory.get_item_list("http://localhost:3000/item_lists/1")["name"]
+            compare = "this is a new name"
+            self.assertEqual(hit, compare, "Expected %s, got %s" %(compare, hit))
+            
     def tearDown(self):
         pass
 

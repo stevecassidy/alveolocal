@@ -29,7 +29,7 @@ class TestAlveolocalLoad(unittest.TestCase):
         """we can attach a directory containing RDF files"""
         
         # check the number of triples loaded
-        self.assertEqual(7576, self.api.attach_directory(TEST_DATA))
+        self.assertEqual(7580, self.api.attach_directory(TEST_DATA))
 
 
     def test_version(self):
@@ -157,6 +157,21 @@ class TestAlveolocal(unittest.TestCase):
         self.assertEqual(4, len(items))
         self.assertNotIn('http://localhost:3000/catalog/cooee/items/1-013', items)
         self.assertIn('http://localhost:3000/catalog/cooee/items/1-011', items)
+        
+    def test_search_sparql(self):
+        
+        query = "select * where {?s <http://purl.org/dc/terms/isPartOf> ?o}"
+        collection_id = "http://localhost:3000/catalog/cooee"
+        result = self.api.search_sparql(collection_id, query)
+        
+        self.assertIsInstance(result, dict, "Expected dict, got %s" % type(result))
+        for key in result.keys():
+            self.assertIn(key, ["head", "results"], "Expected %s to be one of the items in the list" % key)
+        self.assertIn("vars", result["head"], "Expected to include vars")
+        self.assertIn("bindings", result["results"], "Expected to include bindings")
+        for binding in result["results"]["bindings"]:
+            for var in result["head"]["vars"]:
+                self.assertIn(var, binding, "Expected all bindings to include items in vars")
         
     def tearDown(self):
         pass
