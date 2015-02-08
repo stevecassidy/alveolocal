@@ -13,6 +13,7 @@ import os
 import unittest
 
 from alveolocal import API
+from datetime import datetime
 
 
 TEST_DATA = os.path.join(os.path.dirname(__file__), "data")
@@ -29,14 +30,14 @@ class TestAlveolocalLoad(unittest.TestCase):
         """we can attach a directory containing RDF files"""
         
         # check the number of triples loaded
-        self.assertEqual(7580, self.api.attach_directory(TEST_DATA))
+        self.assertEqual(7628, self.api.attach_directory(TEST_DATA))
 
 
     def test_version(self):
         """we return the right version string"""
         
         
-        self.assertEqual("v3.1.1", self.api.version())
+        self.assertEqual("V2.0", self.api.version())
 
 
 class TestAlveolocal(unittest.TestCase):
@@ -139,7 +140,10 @@ class TestAlveolocal(unittest.TestCase):
         
         self.assertEqual(docurl, ann['commonProperties']['alveo:annotates'])
         
-
+        ann = self.api.get_annotations(itemuri, user="Steve.Cassidy@mq.edu.au")
+        ann = self.api.get_annotations(itemuri, priorTo=datetime.strptime("2013-12-20T12:20:00", '%Y-%m-%dT%I:%M:%S'))
+        
+        pass
 
     def test_search(self):
         """we can search for items"""
@@ -161,8 +165,8 @@ class TestAlveolocal(unittest.TestCase):
     def test_search_sparql(self):
         
         query = "select * where {?s <http://purl.org/dc/terms/isPartOf> ?o}"
-        collection_id = "http://localhost:3000/catalog/cooee"
-        result = self.api.search_sparql(collection_id, query)
+        collection_name = "cooee"
+        result = self.api.search_sparql(collection_name, query)
         
         self.assertIsInstance(result, dict, "Expected dict, got %s" % type(result))
         for key in result.keys():

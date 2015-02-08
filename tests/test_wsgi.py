@@ -4,13 +4,12 @@ import unittest
 
 from alveolocal.wsgiapp import *
 import requests
-from array import array
 
 
 class TestWSGI(unittest.TestCase):
 
     def setUp(self):
-        self.api_key = "enter-your-api-key"
+        self.api_key = "SMysEekachrdyGfiheGs"
         self.url_prefix = "https://app.alveo.edu.au"
         self.local_prefix = "http://localhost:3000"
 
@@ -27,26 +26,33 @@ class TestWSGI(unittest.TestCase):
         elif method == "get":
             r = requests.get(prefix + url, params=payload, headers=headers)
         elif method == "post":
-            r = requests.post(prefix + url, data=json.dumps(payload), headers=headers, files=files)
+            r = requests.post(prefix + url, data=json.dumps(payload), headers=headers)
         elif method == "put":
             r = requests.put(prefix + url, data=json.dumps(payload), headers=headers)
+        elif method == "delete":
+            r = requests.delete(prefix + url, headers=headers)
         return r
         
     def test_version(self): 
         url = "/version"       
         hit = self.make_request("local", "get", url).json()
-        compare = self.make_request("online", "get", url).json()
+        compare = {"API version":"V2.0"}
         
-        self.assertEqual(hit, compare, "Expected the same output")
+        self.assertEqual(hit, compare, "Expected the same output, got %s" % hit)
         
     def test_itemlists(self):
+        payload = {"name":"mylist"}
+        self.make_request("local", "post", "/item_lists/229/create", payload)
+        payload = {"name":"mySecondlist"}
+        self.make_request("local", "post", "/item_lists/230/create", payload)
+        
         url = "/item_lists"
         hit = self.make_request("local", "get", url).json()
         compare = self.make_request("online", "get", url).json()
         
-        h1 = type(hit)
-        c1 = type(compare)
-        self.assertEqual(h1, c1, "Expected dict for both; got local:%s, online:%s." % (h1, c1))
+        h1 = type(hit).__name__
+        c1 = "dict"
+        self.assertEqual(h1, c1, "Expected %s; got %s." % (c1, h1))
         
         h1 = hit.keys()
         c1 = compare.keys()
@@ -66,8 +72,16 @@ class TestWSGI(unittest.TestCase):
         for key in c1:
             self.assertIn(key, h1, "Expected local output to include %s" % key)
         
+        self.make_request("local", "delete", "/item_lists/229")
+        self.make_request("local", "delete", "/item_lists/230")
+        
     def test_itemlist(self):
-        hit = self.make_request("local", "get", "/item_lists/1").json()
+        payload = {"name":"mylist"}
+        self.make_request("local", "post", "/item_lists/229/create", payload)
+        payload = {"name":"mySecondlist"}
+        self.make_request("local", "post", "/item_lists/230/create", payload)
+        
+        hit = self.make_request("local", "get", "/item_lists/229").json()
         compare = self.make_request("online", "get", "/item_lists/64").json()
         
         h1 = type(hit)
@@ -138,7 +152,7 @@ class TestWSGI(unittest.TestCase):
         for key in c1:
             self.assertIn(key, h1, "Expected local output to include %s" % key)
             
-    def test_primary_text(self):
+    def test_1primary_text(self):
         url = "/catalog/cooee/1-010/primary_text"
         hit = self.make_request("local", "get", url).text[31:51]
         compare = self.make_request("online", "get", url).text[30:50]
@@ -152,15 +166,8 @@ class TestWSGI(unittest.TestCase):
         
         self.assertEqual(hit, compare, "Expected the same output")
         
-    def test_annotation_context(self):
-        url = "/schema/json-ld"
-        hit = self.make_request("local", "get", url).json()
-        compare = self.make_request("online", "get", url).json()
-        
-        self.assertEqual(hit, compare, "Expected the same output")
-        
     def test_annotations(self):
-        url = "/catalog/cooee/1-010/annotations"
+        url = "/catalog/cooee/1-012/annotations"
         hit = self.make_request("local", "get", url).json()
         compare = self.make_request("online", "get", url).json()
         
@@ -237,6 +244,7 @@ class TestWSGI(unittest.TestCase):
         self.assertEqual(hit, compare, "Expected the same output, got %s" % hit)
         
     def test_add_to_item_list(self):
+        self.make_request("local", "delete", "/item_lists/229")
         payload = {"name":"mylist"}
         self.make_request("local", "post", "/item_lists/229/create", payload)
         url = "/item_lists"
@@ -261,6 +269,7 @@ class TestWSGI(unittest.TestCase):
         self.assertEqual(h1, c1, "Expected the same result, got %s" % h1)
         
     def test_clear_item_list(self):
+        self.make_request("local", "delete", "/item_lists/229")
         payload = {"name":"mylist"}
         self.make_request("local", "post", "/item_lists/229/create", payload)
         url = "/item_lists"
@@ -306,12 +315,6 @@ class TestWSGI(unittest.TestCase):
         compare = {"success":"file 1-010-newAnn uploaded successfully"}
         self.assertEqual(hit, compare, "Expected the same output, got %s" % hit)
         
-        url = "/catalog/cooee/1-010/annotations"
-        hit = self.make_request("local", "get", url).json()
-        
-        h1 = len(hit["alveo:annotations"])
-        compare = 7
-        self.assertEqual(h1, compare, "Expected %s annotations for item test-item, got %s" %(compare, h1))
     
     def tearDown(self):
         pass

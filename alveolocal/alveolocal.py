@@ -3,16 +3,18 @@
 import os
 
 from rdflib import Graph, URIRef
-from namespaces import RDF, DCMITYPE, DC, AUSNC, HCSVLAB, DADA
+from namespaces import RDF, DCMITYPE, DC, AUSNC, HCSVLAB, DADA, XSD, PROV, LOCALTERMS, RDFS, XYZZY, FOAF
 from uuid import uuid4
 from rdflib.term import Literal
-from namespaces import XSD
+from rdflib.plugins.sparql.processor import prepareQuery
+from base import Store
 
 
 class API(object):
     """The Alveo API"""
 
     base_url = "http://localhost:3000/"
+    last_generated_ann_id = None
 
     def attach_directory(self, dirname):
         """Attach to a directory containing RDF files
@@ -34,57 +36,57 @@ class API(object):
     def version(self):
         """Return the current API version string"""
 
-        return "v3.1.1"
+        return "V2.0"
 
     def get_collections(self):
         """Return a list of collections in the store"""
 
         result = []
-        for collectionuri in self.graph.subjects(RDF.type, DCMITYPE.Collection):
-            result.append(str(collectionuri))
+        for collection_uri in self.graph.subjects(RDF.type, DCMITYPE.Collection):
+            result.append(str(collection_uri))
 
         return result
         
         
-    def get_collection(self, collectionid):
+    def get_collection(self, collection_uri):
         """Return the collection metadata for this collection"""
         
         meta = dict()
-        for _,p,o in self.graph.triples((URIRef(collectionid), None, None)):
+        for _,p,o in self.graph.triples((URIRef(collection_uri), None, None)):
             meta[p.n3(self.graph.namespace_manager)] = o.toPython()
         
-        name = self.graph.value(URIRef(collectionid), DC.alternative).toPython()
-        return {'collection_url': collectionid,
+        name = self.graph.value(URIRef(collection_uri), DC.alternative).toPython()
+        return {'collection_url': collection_uri,
                 'collection_name': name,
                 'metadata': meta,
                 }
 
-    def _corpus_name(self, itemid):
+    def _corpus_name(self, item_uri):
         """Return the name of the corpus this item is part of"""
 
-        corpusuri = self.graph.value(subject=URIRef(itemid), predicate=DC.isPartOf)
-        return os.path.basename(corpusuri)
+        corpus_uri = self.graph.value(subject=URIRef(item_uri), predicate=DC.isPartOf)
+        return os.path.basename(corpus_uri)
     
-    def _annotation_url(self, itemid):
+    def _annotation_url(self, item_uri):
         """Return the annotation URL for this itemid"""
         
-        return os.path.join(itemid, "annotations.json")
+        return os.path.join(item_uri, "annotations.json")
         
 
-    def _primary_text_url(self, itemid):
+    def _primary_text_url(self, item_uri):
         """Return the primary text URL for this itemid"""
 
-        return os.path.join(itemid, "primary_text.json")      
+        return os.path.join(item_uri, "primary_text.json")      
 
-    def get_item_metadata(self, itemid):
+    def get_item_metadata(self, item_uri):
         """Return all metadata for the given item identifier as a
         dictionary"""
         
         meta = {
-            u'alveo:annotations_url': self._annotation_url(itemid),
-            u'alveo:primary_text_url': self._primary_text_url(itemid),
+            u'alveo:annotations_url': self._annotation_url(item_uri),
+            u'alveo:primary_text_url': self._primary_text_url(item_uri),
             u'alveo:metadata': dict(),
-            u'alveo:catalog_url': itemid, 
+            u'alveo:catalog_url': item_uri, 
             u'@context': "https://app.alveo.edu.au/schema/json-ld", 
             u'alveo:documents': [],
             }
@@ -111,7 +113,7 @@ class API(object):
                          
                          ]
         
-        for _,p,o in self.graph.triples((URIRef(itemid), None, None)):
+        for _,p,o in self.graph.triples((URIRef(item_uri), None, None)):
             #meta[u'alveo:metadata'][p.n3(self.graph.namespace_manager)] = o.n3(self.graph.namespace_manager)
             meta[u'alveo:metadata'][p.n3(self.graph.namespace_manager)] = o.toPython()
             
@@ -122,7 +124,7 @@ class API(object):
         # get documents and add metadata
         types = []
         docs = []
-        for _,p,o in self.graph.triples((URIRef(itemid), AUSNC.document, None)):
+        for _,p,o in self.graph.triples((URIRef(item_uri), AUSNC.document, None)):
             dm = self._document_metadata(o)
             meta[u'alveo:documents'].append(dm)
             
@@ -135,7 +137,7 @@ class API(object):
         return meta
         
         
-    def _document_metadata(self, docuri):
+    def _document_metadata(self, doc_uri):
         """Generate the dictionary of document metadata for this document"""
         
         
@@ -148,7 +150,7 @@ class API(object):
              u'dcterms:type': u'',
              u'rdf:type': u'http://xmlns.com/foaf/0.1/Document',
         }
-        for _,p,o in self.graph.triples((docuri, None, None)):
+        for _,p,o in self.graph.triples((doc_uri, None, None)):
             if p.n3(self.graph.namespace_manager) == u'dc:source':
                 meta[u'alveo:url'] = str(o)
             else:
@@ -167,24 +169,24 @@ class API(object):
         else:
             return uri
         
-    def _get_display_document_url(self, itemid):
+    def _get_display_document_url(self, item_uri):
         """Return the url of the display document if any, None if not"""
 
         # get the display document
-        docuri = self.graph.value(subject=URIRef(itemid), predicate=HCSVLAB.indexable_document)
-        source = self.graph.value(subject=docuri, predicate=DC.source)
+        doc_uri = self.graph.value(subject=URIRef(item_uri), predicate=HCSVLAB.indexable_document)
+        source = self.graph.value(subject=doc_uri, predicate=DC.source)
 
-        if docuri is None:
+        if doc_uri is None:
             return None
         
         return str(source)
         
         
-    def get_primary_text(self, itemid):
+    def get_primary_text(self, item_uri):
         """Return the primary text for this item if any, None if not"""
         
         # get the display document
-        source = self._get_display_document_url(itemid)
+        source = self._get_display_document_url(item_uri)
         
         if source is None:
             return None
@@ -202,13 +204,13 @@ class API(object):
         # return it
         return text.decode("utf-8")
         
-    def get_document(self, collection_name, file_name):
-        path = os.path.join(self.basedir, collection_name, file_name)
+    def get_document(self, collection_id, file_name):
+        path = os.path.join(self.basedir, collection_id, file_name)
         with open(path) as textfile:
             text = textfile.read()
         return text
         
-    def get_annotations(self, itemid, **filters):
+    def get_annotations(self, item_uri, **filters):
         """Return the annotations for this item as a dictionary"""
         
         result = {'@context': "https://app.alveo.edu.au/schema/json-ld",
@@ -216,50 +218,70 @@ class API(object):
                   }
                   
         anns = []
-        for aset in self.graph.subjects(DADA.annotates, URIRef(itemid)):
-            for annid in self.graph.subjects(DADA.partof, aset):
-                ann = {
-                    '@id': str(annid),
-                    '@type': '',
-                    'label': str(self.graph.value(subject=annid, predicate=DADA.label)),
-                    'type': str(self.graph.value(subject=annid, predicate=DADA.type)),
-                    'start': '',
-                    'end': '',
-                }
+        initBindings = {"item":URIRef(item_uri)}
+        query = prepareQuery("""select ?annotation where {
+                                                          ?annotation dada:partof ?annCollection.
+                                                          ?annCollection dada:annotates ?item.
+                                                       }""", initNs={"dada":DADA})
+        if "priorTo" in filters:
+            initBindings = {"item":URIRef(item_uri),
+                            "givenTime":Literal(filters["priorTo"].strftime('%Y-%m-%dT%I:%M:%S'), datatype=XSD.dateTime)}
+            query = prepareQuery("""select ?annotation where {
+                                                              ?annotation dada:partof ?annCollection.
+                                                              ?annCollection dada:annotates ?item.
+                                                              ?annCollecction prov:generatedAtTime ?time.
+                                                              FILTER (?time < ?givenTime)
+                                                           }""", initNs={"dada":DADA,
+                                                                         "prov":PROV})
+        elif "user" in filters:
+            initBindings = {"item":URIRef(item_uri),
+                            "user":Literal(filters["user"])}
+            query = prepareQuery("""select ?annotation where {
+                                                              ?annotation dada:partof ?annCollection.
+                                                              ?annCollection dada:annotates ?item.
+                                                              ?annCollection prov:generatedBy ?activity.
+                                                              ?activity prov:wasAssociatedWith ?user.
+                                                           }""", initNs={"dada":DADA,
+                                                                         "prov":PROV})
+        annResults = self.graph.query(query, initBindings=initBindings)
+        annIDs = [annResult["annotation"] for annResult in annResults.bindings]
+        for annid in annIDs:
+            ann = {
+                '@id': str(annid),
+                '@type': '',
+                'label': str(self.graph.value(subject=annid, predicate=DADA.label)),
+                'type': str(self.graph.value(subject=annid, predicate=DADA.type)),
+                'start': '',
+                'end': '',
+            }
+            
+            region = self.graph.value(subject=annid, predicate=DADA.targets)
+            ann['start'] = self.graph.value(subject=region, predicate=DADA.start).toPython()
+            ann['end'] = self.graph.value(subject=region, predicate=DADA.end).toPython()
+            
+            atype = self.graph.value(subject=region, predicate=RDF.type)
+            if atype == DADA.UTF8Region:
+                ann['@type'] = 'dada:TextAnnotation'
+            elif atype == DADA.SecondRegion:
+                ann['@type'] = 'dada:SecondAnnotation'
+            
+            
+            for _,p,o in self.graph.triples((annid, None, None)):
+                if p not in [DADA.label, DADA.type, DADA.targets, RDF.type, DADA.partof]:
+                    ann[p.n3(self.graph.namespace_manager)] = o.toPython()
+            
+            anns.append(ann)
                 
-                region = self.graph.value(subject=annid, predicate=DADA.targets)
-                ann['start'] = self.graph.value(subject=region, predicate=DADA.start).toPython()
-                ann['end'] = self.graph.value(subject=region, predicate=DADA.end).toPython()
-                
-                atype = self.graph.value(subject=region, predicate=RDF.type)
-                if atype == DADA.UTF8Region:
-                    ann['@type'] = 'dada:TextAnnotation'
-                elif atype == DADA.SecondRegion:
-                    ann['@type'] = 'dada:SecondAnnotation'
-                
-                
-                for _,p,o in self.graph.triples((annid, None, None)):
-                    if p not in [DADA.label, DADA.type, DADA.targets, RDF.type, DADA.partof]:
-                        ann[p.n3(self.graph.namespace_manager)] = o.toPython()
-                
-                
-                conditions = []
-                conditions.append("type" not in filters.keys() or URIRef(ann["type"]) == self._denamespace(filters["type"]))
-                conditions.append("label" not in filters.keys() or ann["label"] == filters["label"])
-                conditions.append("start" not in filters.keys() or str(ann["start"]) == filters["start"])
-                conditions.append("end" not in filters.keys() or str(ann["end"]) == filters["end"])
-                if all(conditions):
-                    anns.append(ann)
                 
         result['alveo:annotations'] = anns
-        result['commonProperties']['alveo:annotates'] = self._get_display_document_url(itemid)
+        result['commonProperties']['alveo:annotates'] = self._get_display_document_url(item_uri)
         
         return result
         
-    def get_annotation_types(self, itemid):
-        result = {"item_url":itemid}
+    def get_annotation_types(self, item_uri):
+        result = {"item_url":item_uri}
         types = []
-        for aset in self.graph.subjects(DADA.annotates, URIRef(itemid)):
+        for aset in self.graph.subjects(DADA.annotates, URIRef(item_uri)):
             for annid in self.graph.subjects(DADA.partof, aset):
                 dadatype = self.graph.value(subject=annid, predicate=DADA.type).toPython()
                 if not dadatype in types:
@@ -271,35 +293,24 @@ class API(object):
         
     def get_annotation_context(self):
         output = {
-                  "@context":{
-                              "commonProperties":{"@id":"http://purl.org/dada/schema/0.2#commonProperties"},
-                              "dada":{"@id":"http://purl.org/dada/schema/0.2#"},
-                              "type":{"@id":"http://purl.org/dada/schema/0.2#type"},
-                              "start":{"@id":"http://purl.org/dada/schema/0.2#start"},
-                              "end":{"@id":"http://purl.org/dada/schema/0.2#end"},
-                              "label":{"@id":"http://purl.org/dada/schema/0.2#label"},
-                              "alveo":{"@id":"http://alveo.edu.au/schema/"},
-                              "ace":{"@id":"http://ns.ausnc.org.au/schemas/ace/"},
-                              "ausnc":{"@id":"http://ns.ausnc.org.au/schemas/ausnc_md_model/"},
-                              "austalk":{"@id":"http://ns.austalk.edu.au/"},
-                              "austlit":{"@id":"http://ns.ausnc.org.au/schemas/austlit/"},
-                              "bibo":{"@id":"http://purl.org/ontology/bibo/"},
-                              "cooee":{"@id":"http://ns.ausnc.org.au/schemas/cooee/"},
-                              "dc":{"@id":"http://purl.org/dc/terms/"},
-                              "foaf":{"@id":"http://xmlns.com/foaf/0.1/"},
-                              "gcsause":{"@id":"http://ns.ausnc.org.au/schemas/gcsause/"},
-                              "ice":{"@id":"http://ns.ausnc.org.au/schemas/ice/"},
-                              "olac":{"@id":"http://www.language-archives.org/OLAC/1.1/"},
-                              "purl":{"@id":"http://purl.org/"},
-                              "rdf":{"@id":"http://www.w3.org/1999/02/22-rdf-syntax-ns#"},
-                              "schema":{"@id":"http://schema.org/"},
-                              "xsd":{"@id":"http://www.w3.org/2001/XMLSchema#"}
-                              }
-                  }
+                    "@context": {
+                        "@base":"http://purl.org/dada/schema/0.2/",
+                        "annotations":{
+                            "@id":"http://purl.org/dada/schema/0.2/annotations",
+                            "@container":"@list"
+                        },
+                        "commonProperties": {"@id":"http://purl.org/dada/schema/0.2/commonProperties"},
+                        "type":{"@id":"http://purl.org/dada/schema/0.2/type"},
+                        "start":{"@id":"http://purl.org/dada/schema/0.2/start"},
+                        "end":{"@id":"http://purl.org/dada/schema/0.2/end"},
+                        "label":{"@id":"http://purl.org/dada/schema/0.2/label"},
+                        "annotates":{"@id":"http://purl.org/dada/schema/0.2/annotates"}
+                    }
+                }
         return output
     
     def _denamespace(self, qname):
-        """Return the full url for qname according to the graph prefixes"""
+        """Return the full url for qname e.g. dada:partof according to the graph prefixes"""
     
         for ns in self.graph.namespaces():
             if qname.startswith(ns[0]):
@@ -333,12 +344,13 @@ class API(object):
         
         return items
     
-    def search_sparql(self, collection_id, query):
+    def search_sparql(self, collection_uri, query):
+        collection_id = self._get_id(collection_uri)
         output = {"head":{"vars":[]}, "results":{"bindings":[]}}
-        subgraph = Graph()
-        subgraph += self.graph.triples((URIRef(collection_id), None, None))
-        subgraph += self.graph.triples((None, None, URIRef(collection_id)))
-        result = subgraph.query(query)        
+        subgraph = Store()
+        subgraph.attach_directory(os.path.join(self.basedir, collection_id))
+        subgraph.graph.parse(os.path.join(self.basedir, collection_id+".n3"), format='n3')
+        result = subgraph.graph.query(query)        
         for var in result.vars:
             output["head"]["vars"].append(str(var))
         for binding in result.bindings:
@@ -348,14 +360,42 @@ class API(object):
             output["results"]["bindings"].append(temp)
         return output
     
-    def add_annotation(self, filename, collection_id, collection_name, data):
+    def add_annotation(self, **params):
+        if "collection_uri" in params:
+            collection_uri = params["collection_uri"]
+        if "data" in params:
+            data = params["data"]
+        if "filename" in params:
+            filename = params["filename"]
         g = Graph()
         g.bind("dada", "http://purl.org/dada/schema/0.2#")
-        ann_coll_id = "%s/annotation/%s" %(collection_id, uuid4())
+        ann_coll_id = "%s/annotation/%s" %(collection_uri, uuid4())
+        activity = self.create_activity()
+        user = self.get_user(data["metadata"]["creator"])
+        software = self.get_software(data["metadata"]["generatedBy"])
+        # Annotation Collection
         g.add((URIRef(ann_coll_id), RDF.type, DADA.AnnotationCollection))
-        g.add((URIRef(ann_coll_id), DADA.annotates, URIRef(data["commonProperties"]["alveo:annotates"])))
+        g.add((URIRef(ann_coll_id), RDF.type, PROV.Entity))
+        g.add((URIRef(ann_coll_id), DADA.annotates, URIRef(data["metadata"]["alveo:annotates"])))
+        g.add((URIRef(ann_coll_id), PROV.generatedAtTime, Literal(data["metadata"]["generatedAtTime"], datatype=XSD.dateTime)))
+        g.add((URIRef(ann_coll_id), PROV.wasGeneratedBy, URIRef(activity["@id"])))
+        # Activity
+        g.add((URIRef(activity["@id"]), RDF.type, PROV.Activity))
+        g.add((URIRef(activity["@id"]), RDFS.label, Literal(activity["label"])))
+        g.add((URIRef(activity["@id"]), PROV.wasAssociatedWith, URIRef(user["@id"])))
+        g.add((URIRef(activity["@id"]), PROV.wasAssociatedWith, URIRef(software["@id"])))
+        # Software
+        g.add((URIRef(software["@id"]), RDF.type, PROV.Activity))
+        g.add((URIRef(software["@id"]), RDF.type, PROV.SoftwareAgent))
+        g.add((URIRef(software["@id"]), RDFS.label, Literal(software["label"])))
+        g.add((URIRef(software["@id"]), XYZZY.source, URIRef(software["source"])))
+        # User
+        g.add((URIRef(user["@id"]), RDF.type, FOAF.Person))
+        g.add((URIRef(user["@id"]), RDF.type, PROV.Agent))
+        g.add((URIRef(user["@id"]), FOAF.name, Literal(user["name"])))
+        # Annotations
         for annotation in data["alveo:annotations"]:
-            ann_id = self.generate_annotation_id(collection_id)
+            ann_id = self.generate_annotation_id(collection_uri)
             ann_reg_id = ann_id + "L"
             g.add((URIRef(ann_id), RDF.type, DADA.Annotation))
             g.add((URIRef(ann_id), DADA.partof, URIRef(ann_coll_id)))
@@ -367,18 +407,126 @@ class API(object):
                 g.add((URIRef(ann_reg_id), RDF.type, DADA.UTF8Region))
             elif annotation["@type"] == "dada:SecondAnnotation":
                 g.add((URIRef(ann_reg_id), RDF.type, DADA.SecondRegion))
-            g.add((URIRef(ann_reg_id), DADA.start, Literal(annotation["start"], datatype=XSD.int)))
-            g.add((URIRef(ann_reg_id), DADA.end, Literal(annotation["end"], datatype=XSD.int)))
-        g.serialize(os.path.join(self.basedir, collection_name, filename+".n3"), format="n3")
+            g.add((URIRef(ann_reg_id), DADA.start, Literal(annotation["start"], datatype=XSD.integer)))
+            g.add((URIRef(ann_reg_id), DADA.end, Literal(annotation["end"], datatype=XSD.integer)))
+        g.serialize(os.path.join(self.basedir, self._get_id(collection_uri), filename+".n3"), format="n3")
         self.graph += g
         return {"success":"file %s uploaded successfully" % filename}
      
-    num = 1000   
-    def generate_annotation_id(self, collection_id):
-        API.num += 1
-        return collection_id + "/annotation/" + str(API.num)
+    def generate_annotation_id(self, collection_uri):
+        collection_id = self._get_id(collection_uri)
+        prefix = collection_uri + "/annotation/"
+        if API.last_generated_ann_id is None:
+            query = prepareQuery('select ?annotation where {?annotation a ?type}')
+            annotations = []
+            g = Store()
+            g.attach_directory(os.path.join(self.basedir, collection_id))
+            results = g.graph.query(query, initBindings={'type': DADA.Annotation})
+            for result in results.bindings:
+                annotations.append(int(result["annotation"].toPython().replace(prefix, "")))
+    
+            API.last_generated_ann_id = max(annotations)
+        API.last_generated_ann_id += 1
+        return prefix + str(API.last_generated_ann_id)
+
+    def _get_uri(self, output_uri_type, input_uri_type, input_uri):
+        if output_uri_type == "collection":
+            if input_uri_type == "item":
+                query = prepareQuery("""select ?collection where{
+                                                    ?collection a dcmitype:Collection.
+                                                    ?item dc:isPartOf ?collection.
+                                                    }""", initNs = {"dc":DC, 
+                                                                    "dcmitype":DCMITYPE})
+            elif input_uri_type == "document":
+                query = prepareQuery("""select ?collection where{
+                                                    ?collection a dcmitype:Collection.
+                                                    ?item dc:isPartOf ?collection.
+                                                    ?item ausnc:document ?document.
+                                                    }""", initNs = {"dc":DC, 
+                                                                    "dcmitype":DCMITYPE,
+                                                                    "ausnc":AUSNC})
+            elif input_uri_type == "source":
+                query = prepareQuery("""select ?collection where{
+                                                    ?collection a dcmitype:Collection.
+                                                    ?item dc:isPartOf ?collection.
+                                                    ?item ausnc:document ?document.
+                                                    ?document dc:source ?source. 
+                                                    }""", initNs = {"dc":DC, 
+                                                                    "dcmitype":DCMITYPE,
+                                                                    "ausnc":AUSNC})
+            elif input_uri_type == "annotation":
+                query = prepareQuery("""select ?collection where{
+                                                    ?collection a dcmitype:Collection.
+                                                    ?item dc:isPartOf ?collection.
+                                                    ?annCollID dada:annotates ?item.
+                                                    ?annotation dada:partof ?annCollID.
+                                                    }""", initNs = {"dc":DC, 
+                                                                    "dcmitype":DCMITYPE,
+                                                                    "dada":DADA})
+            else:
+                return []
+        elif output_uri_type == "item":
+            if input_uri_type == "collection":
+                query = prepareQuery("""select ?item where{
+                                                    ?collection a dcmitype:Collection.
+                                                    ?item dc:isPartOf ?collection.
+                                                    }""", initNs = {"dc":DC, 
+                                                                    "dcmitype":DCMITYPE})
+            elif input_uri_type == "itemlist":
+                query = prepareQuery("""select ?item where{
+                                                    ?itemlistid a localterms:itemList.
+                                                    ?item dc:isPartOf ?itemlistid.
+                                                    }""", initNs = {"localterms":LOCALTERMS,
+                                                                    "dc":DC})
+            elif input_uri_type == "annotation":
+                query = prepareQuery("""select ?item where{
+                                                    ?annCollID dada:annotates ?item.
+                                                    ?annotation dada:partof ?annCollID.
+                                                    }""", initNs = {"dada":DADA})
+            elif input_uri_type == "document":
+                query = prepareQuery("""select ?item where{
+                                                    ?item ausnc:document ?document.
+                                                    }""", initNs = {"ausnc":AUSNC})
+            elif input_uri_type == "source":
+                query = prepareQuery("""select ?item where{
+                                                    ?item ausnc:document ?document.
+                                                    ?document dc:source ?source. 
+                                                    }""", initNs = {"dc":DC, 
+                                                                    "ausnc":AUSNC})
+            else:
+                return []
+        elif output_uri_type == "annotation":
+            if input_uri_type == "item":
+                query = prepareQuery("""select ?annotation where{
+                                                    ?annotation dada:partof ?annCollID.
+                                                    ?annCollID dada:annotates ?item.
+                                                    }""", initNs = {"dada":DADA})
+            else:
+                return []
+        initBindings={input_uri_type: URIRef(input_uri)}
+        results = self.graph.query(query, initBindings=initBindings)
+        output = [result[output_uri_type].toPython() for result in results.bindings]
+        return output
+    
+    def _get_id(self, input_uri):
+        return input_uri[input_uri.rfind("/")+1:]
         
-    
-    
-    
+    def get_user(self, user_email):
+        return {
+                "@id":"person21",
+                "name":"Steve Cassidy",
+                "email":"Steve.Cassidy@mq.edu.au"
+                }
         
+    def get_software(self, software_id):
+        return {
+                "label":"A python script to parse the annotation",
+                "source":"https://github.com/IntersectAustralia/hcsvlab_robochef/commit/2b5baa438bb57687a567ec4b0668b169d349c2ae",
+                "@id":"parsedManualAnnotation"
+                }
+        
+    def create_activity(self):
+        return {
+                "@id":"originalAnnotation12",
+                "label":"parsing of the original annotation supplied with the corpus"
+                }

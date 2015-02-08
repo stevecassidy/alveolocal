@@ -11,12 +11,13 @@ TEST_DATA = os.path.join(os.path.dirname(__file__), "..", "tests", "data")
 factory = ItemListFactory("rdf", os.path.join(TEST_DATA, "itemlists"))
 
 
-@application.route('/version')
+@application.get('/version')
 def version():
-    return json.dumps({"API version":alveo.version()})
+    output = {"API version":alveo.version()}
+    return json.dumps(output)
 
 
-@application.route('/catalog/')
+@application.get('/catalog/')
 def catalog():
     coll =  alveo.get_collections()
     output = {'num_collections': len(coll),
@@ -25,95 +26,99 @@ def catalog():
     return json.dumps(output)
 
 
-@application.route('/catalog/<collection_name>')
-def collection(collection_name):
-    
+@application.get('/catalog/<collection_id>')
+def collection(collection_id):
+    output = alveo.get_collection(request.url)
     response.content_type = 'application/json'
-    return json.dumps(alveo.get_collection(request.url))
+    return json.dumps(output)
     
-@application.route('/item_lists')
+@application.get('/item_lists')
 def itemlists():
-    
+    output = factory.get_item_lists()
     response.content_type = 'application/json'
-    return json.dumps(factory.get_item_lists())
+    return json.dumps(output)
     
-@application.route('/item_lists/<itemlist_id>')
+@application.get('/item_lists/<itemlist_id>')
 def itemlist(itemlist_id):
-    
+    output = factory.get_item_list(request.url)
     response.content_type = 'application/json'
-    return json.dumps(factory.get_item_list(request.url))
+    return json.dumps(output)
 
 @application.delete('/item_lists/<itemlist_id>')
 def delete_itemlist(itemlist_id):
-    
+    output = factory.delete_item_list(request.url)
     response.content_type = 'application/json'
-    return json.dumps(factory.delete_item_list(request.url))
+    return json.dumps(output)
 
 @application.post('/item_lists/<itemlist_id>/create')
 def create_itemlist(itemlist_id):
-    
     input_data = request.json
     url = request.url
     name = input_data["name"]
+    output = factory.create_item_list(url.replace("/create", ""), name, "own")
     response.content_type = 'application/json'
-    return json.dumps(factory.create_item_list(url.replace("/create", ""), name, "own"))
+    return json.dumps(output)
 
 @application.post('/item_lists/<itemlist_id>/share')
 def share_itemlist(itemlist_id):
-    
     url = request.url
+    output = factory.share_item_list(url.replace("/share", ""))
     response.content_type = 'application/json'
-    return json.dumps(factory.share_item_list(url.replace("/share", "")))
+    return json.dumps(output)
 
 @application.post('/item_lists/<itemlist_id>/unshare')
 def unshare_itemlist(itemlist_id):
-    
     url = request.url
+    output = factory.unshare_item_list(url.replace("/unshare", ""))
     response.content_type = 'application/json'
-    return json.dumps(factory.unshare_item_list(url.replace("/unshare", "")))
+    return json.dumps(output)
 
 @application.post('/item_lists/<itemlist_id>/clear')
 def clear_itemlist(itemlist_id):
-    
     url = request.url
+    output = factory.clear_item_list(url.replace("/clear", ""))
     response.content_type = 'application/json'
-    return json.dumps(factory.clear_item_list(url.replace("/clear", "")))
+    return json.dumps(output)
 
-@application.route('/catalog/<collection_name>/<item_id>')
-def metadata(collection_name, item_id):
-    url = "http://localhost:3000/catalog/%s/items/%s" %(collection_name, item_id)
+@application.get('/catalog/<collection_id>/<item_id>')
+def metadata(collection_id, item_id):
+    url = request.url
+    url = url.replace(item_id, "items/%s" % item_id)
+    output = alveo.get_item_metadata(url)
     response.content_type = 'application/json'
-    return json.dumps(alveo.get_item_metadata(url))
+    return json.dumps(output)
 
-@application.route('/catalog/<collection_name>/<item_id>/primary_text')
-def primary_text(collection_name, item_id):
-    
-    url = "http://localhost:3000/catalog/%s/items/%s" %(collection_name, item_id)
-    result = alveo.get_primary_text(url)
-    if result == None:
+@application.get('/catalog/<collection_id>/<item_id>/primary_text')
+def primary_text(collection_id, item_id):
+    url = request.url
+    url = url.replace("%s/primary_text" % item_id, "items/%s" % item_id)
+    output = alveo.get_primary_text(url)
+    if output == None:
         abort(404, "Item has no primary text")
     else:
         response.content_type = 'text/plain'
-        return result
+        return output
 
-@application.route('/catalog/<collection_name>/<item_id>/document/<file_name>')
-def document(collection_name, item_id, file_name):
-    text = alveo.get_document(collection_name, file_name)
+@application.get('/catalog/<collection_id>/<item_id>/document/<file_name>')
+def document(collection_id, item_id, file_name):
+    output = alveo.get_document(collection_id, file_name)
     response.content_type = 'text/plain'
-    return text
+    return output
 
-@application.route('/schema/json-ld')
+@application.get('/schema/json-ld')
 def annotation_context():
     output = alveo.get_annotation_context()
     response.content_type = 'application/json'
     return json.dumps(output)
 
-@application.get('/catalog/<collection_name>/<item_id>/annotations')
-def annotations(collection_name, item_id):
-    url = "http://localhost:3000/catalog/%s/items/%s" %(collection_name, item_id)
-    result = alveo.get_annotations(url)
+@application.get('/catalog/<collection_id>/<item_id>/annotations')
+def annotations(collection_id, item_id):
+    input_data = request.json
+    url = request.url
+    url = url.replace("%s/annotations" % item_id, "items/%s" % item_id)
+    output = alveo.get_annotations(url)
     response.content_type = 'application/json'
-    return json.dumps(result)
+    return json.dumps(output)
 
 @application.route('/catalog/<collection_name>/<item_id>/annotations/types')
 def annotation_types(collection_name, item_id):
@@ -148,7 +153,7 @@ def add_to_itemlist():
         return {"error":"items parameter not an array"}
     for item in items:
         factory.add_to_item_list(itemlist_id, item)
-    return {"success":"%s items added to existing item list %s" %(len(items), name)}
+    return json.dumps({"success":"%s items added to existing item list %s" %(len(items), name)})
 
 @application.put('/item_lists/<itemlist_id>')
 def rename_itemlist(itemlist_id):
@@ -162,23 +167,25 @@ def rename_itemlist(itemlist_id):
                 "num_items":len(factory.get_item_list(request.url)["items"]),
                 "items":factory.get_item_list(request.url)["items"]
                 } 
-    return output
+    return json.dumps(output)
 
-@application.post('/catalog/<collection_name>/<item_id>/annotations')
-def upload_annotation(collection_name, item_id):
+@application.post('/catalog/<collection_id>/<item_id>/annotations')
+def upload_annotation(collection_id, item_id):
     url = request.url
-    collection_id = url.replace("/%s/annotations" % item_id, "")
+    collection_uri = url.replace("/%s/annotations" % item_id, "")
     uploadedfile = request.POST.get("file").file
     text = uploadedfile.read()
     data = json.loads(text)
     name = request.POST.get("file").raw_filename
     response.content_type = 'application/json'
-    return alveo.add_annotation(name, collection_id, collection_name, data)
+    return json.dumps(alveo.add_annotation(filename=name, collection_uri=collection_uri, data=data))
 
-@application.route('/sparql/<collection_name>?query=<sparql_query>')
-def search_metadata_sparql(collection_name, sparql_query):
-    
-    pass
+@application.route('/sparql/<collection_id>?query=<sparql_query>')
+def search_metadata_sparql(collection_id, sparql_query):
+    collection_uri = "%scatalog/%s" %(alveo.base_url, collection_id)
+    output = alveo.search_sparql(collection_uri, sparql_query)
+    response.content_type = 'application/json'
+    return output
 
 if __name__=='__main__':
     

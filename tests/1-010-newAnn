@@ -1,7 +1,10 @@
 {
 	"@context":"https://app.alveo.edu.au/schema/json-ld",
-	"commonProperties":{
-							"alveo:annotates":"http://localhost:3000/catalog/cooee/items/1-010"
+	"metadata":{
+							"alveo:annotates":"http://localhost:3000/catalog/cooee/items/1-010",
+							"generatedAtTime":"2014-12-20T12:20:00",
+							"generatedBy":"robochef/2b5baa438bb57687a567ec4b0668b169d349c2ae",
+							"creator":"Steve.Cassidy@mq.edu.au"
 						},
 	"alveo:annotations":[
 							{

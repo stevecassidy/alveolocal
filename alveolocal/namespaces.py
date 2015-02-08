@@ -22,6 +22,8 @@ OWL = Namespace(u"http://www.w3.org/2002/07/owl#")
 XSD = Namespace(u"http://www.w3.org/2001/XMLSchema#")
 HCSVLAB = Namespace(u"http://hcsvlab.org/vocabulary/")
 LOCALTERMS = Namespace(u"http://localhost:3000/alveolocal/terms#")
+PROV = Namespace(u"prov")
+XYZZY = Namespace(u"xyzzy")
 
 # Namespaces we control
 # SCHEMA is the namespace for all schema
