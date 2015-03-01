@@ -1,0 +1,9 @@
+<div>
+	<strong>Number of items: </strong>{{num_results}}</br>
+	<strong>Items: </strong>
+	<ul>
+	{% for item in items %}
+		<li>{{item}}</li>
+	{% endfor %}
+	</ul>
+</div>

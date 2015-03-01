@@ -1,0 +1,20 @@
+<div>
+{% block body %}
+	Context: <a href={{context}}>{{context}}</a></br>
+	Annotates: <a href={{commonProperties['annotates']}}>{{commonProperties['annotates']}}</a></br>
+	Annotations:</br>
+		<ul>
+		{% for annotation in annotations %}
+			<li>
+				<a href={{annotation.id}}>{{annotation.id}}</a>- <strong>Type</strong>:{{annotation.annType}}
+				<ul>
+					<li><strong>Start</strong>: {{annotation.start}}</li>
+					<li><strong>End</strong>: {{annotation.end}}</li>
+					<li><strong>Label</strong>: {{annotation.label}}</li>
+					<li><strong>Type</strong>: <a href={{annotation.type}}>{{annotation.type}}</a></li>
+				</ul>
+			</li>
+		{% endfor %}	
+		</ul>
+{% endblock %}
+</div>

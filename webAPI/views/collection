@@ -1,0 +1,13 @@
+<div id="navcontainer">
+<link rel="stylesheet" type="text/css" href="/static/css/collection.css"> 
+{% block body %}
+	Collection Name: {{collection_name}}</br>
+	Collection URL: <a href='{{collection_url}}'>{{collection_url}}</a></br>
+	Metadata:</br>
+	<ul>
+		{% for key in metadata %}
+			<li><strong>{{key}}</strong>: {{metadata[key]}}</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+</div>

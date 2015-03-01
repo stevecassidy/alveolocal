@@ -1,0 +1,13 @@
+<div>
+{% block body %}
+	<strong>Name:</strong> {{name}}</br>
+	<strong>Status:</strong> {{shared}}</br>
+	<strong>Number of Items:</strong> {{num_items}}</br>
+	<strong>Items:</strong></br>
+		<ul>
+			{% for item in items %}
+				<li><a href={{item}}>{{item}}</a></li>
+			{% endfor %}
+		</ul>
+{% endblock %}
+</div>

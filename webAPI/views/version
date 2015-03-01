@@ -1,0 +1,6 @@
+<div>
+{% block body %}
+	Alveolocal- API Version:</br>
+	{{version}}
+{% endblock %}
+</div>

@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>AlveoLocal-Home</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/main.css"> 
+	</head>
+	<body>
+		<ul>
+			<li><a href=''>Owned Item Lists:</a></li>
+		    {%  for itemlist in itemlists.own %}
+		    	<li><a href={{itemlist.name}} target="myIframe">{{itemlist.item_list_url}}</a></li>
+		    {% endfor %}
+		</ul>
+		<ul>
+			<li><a href=''>Shared Item Lists:</a></li>
+		    {%  for itemlist in itemlists.shared %}
+		    	<li><a href={{itemlist.item_list_url}} target="myIframe">{{itemlist.name}}</a></li>
+		    {% endfor %}
+		</ul>
+		<ul>
+			<li><a href=''>Collections:</a></li>
+		    {%  for name, uri in collections.iteritems() %}
+		    	<li><a href={{uri}} target="myIframe">{{name}}</a></li>
+		    {% endfor %}
+		</ul>
+		<iframe name="myIframe">
+			
+		</iframe>
+	</body>
+</html>

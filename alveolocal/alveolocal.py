@@ -8,6 +8,8 @@ from uuid import uuid4
 from rdflib.term import Literal
 from rdflib.plugins.sparql.processor import prepareQuery
 from base import Store
+import requests
+import json
 
 
 class API(object):
@@ -210,13 +212,15 @@ class API(object):
             text = textfile.read()
         return text
         
-    def get_annotations(self, item_uri, **filters):
+    def get_annotations(self, item_uri, filters):
         """Return the annotations for this item as a dictionary"""
         
         result = {'@context': "https://app.alveo.edu.au/schema/json-ld",
                   'commonProperties': {},
                   }
                   
+        if filters is None:
+            filters = {}
         anns = []
         initBindings = {"item":URIRef(item_uri)}
         query = prepareQuery("""select ?annotation where {
@@ -243,6 +247,14 @@ class API(object):
                                                               ?activity prov:wasAssociatedWith ?user.
                                                            }""", initNs={"dada":DADA,
                                                                          "prov":PROV})
+        elif "type" in filters:
+            initBindings = {"item":URIRef(item_uri),
+                            "type":URIRef(self._denamespace(filters["type"]))}
+            query = prepareQuery("""select ?annotation where {
+                                                              ?annotation dada:partof ?annCollection.
+                                                              ?annCollection dada:annotates ?item.
+                                                              ?annotation dada:type ?type
+                                                           }""", initNs={"dada":DADA})
         annResults = self.graph.query(query, initBindings=initBindings)
         annIDs = [annResult["annotation"] for annResult in annResults.bindings]
         for annid in annIDs:
@@ -313,7 +325,8 @@ class API(object):
         """Return the full url for qname e.g. dada:partof according to the graph prefixes"""
     
         for ns in self.graph.namespaces():
-            if qname.startswith(ns[0]):
+            parts = qname.split(':')
+            if ns[0] == parts[0]:
                 suffix = qname.split(':')[1]
                 return URIRef(ns[1] + suffix)
         
@@ -359,6 +372,20 @@ class API(object):
                 temp[var] = {"type":type(binding[var]).__name__, "value":binding[var].toPython()}
             output["results"]["bindings"].append(temp)
         return output
+    
+    def download_files(self, items, api_key):
+        url = "https://app.alveo.edu.au/catalog/download_items"
+        headers = {"X-API-KEY": api_key, "Accept": "application/json"}
+        headers["content-type"] = "application/json"
+        payload = {'items':items}
+        r = requests.post(url, data=json.dumps(payload), headers=headers)
+        with open('temp.zip', 'wb') as f:
+            for chunk in r.iter_content(chunk_size=1024): 
+                if chunk:
+                    f.write(chunk)
+                    f.flush()
+        # TODO: run the script to generate local version of the files
+        # move the final files to the correct place
     
     def add_annotation(self, **params):
         if "collection_uri" in params:
@@ -530,3 +557,4 @@ class API(object):
                 "@id":"originalAnnotation12",
                 "label":"parsing of the original annotation supplied with the corpus"
                 }
+        

@@ -1,0 +1,11 @@
+<div>
+{% block body %}
+	Number of collections: {{num_collections}}</br>
+	Collections:</br>
+	<ul>
+		{% for collection in collections %}
+			<li><a href='{{collection}}'>{{collection}}</a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+</div>

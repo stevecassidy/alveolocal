@@ -1,0 +1,7 @@
+<div>
+{% for var in vars %}
+	{% for key, value in var.iteritems() %}
+		<strong>{{key}}: </strong>{{value}}</br>
+	{% endfor %}
+{% endfor %}
+</div>

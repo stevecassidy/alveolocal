@@ -1,0 +1,26 @@
+{% macro deep(vars) %}
+	<ul>
+	{% for var in vars %}
+		{% if 'http' in var %}
+			<li><strong><a href={{var}}>{{var}}</a> </strong>
+		{% else %}
+			<li><strong>{{var}}: </strong>
+			{% if vars[var] is string and 'http' in vars[var] %}
+				<a href={{vars[var]}}>{{vars[var]}}</a>
+			{% elif vars[var] is mapping or vars[var] is iterable %}
+				{{deep(vars[var])}}
+			{% else %}
+				{{vars[var]}}
+			{% endif %}
+			</li>
+		{% endif %}
+	{% endfor %}
+	</ul>
+{% endmacro %}
+
+<div>
+{% for var in vars %}
+	{{deep(vars)}}
+{% endfor %}
+</div>
+

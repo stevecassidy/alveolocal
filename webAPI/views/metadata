@@ -1,0 +1,44 @@
+<div>
+{% block body %}
+	{%- for key in vars -%}
+		<strong>{{key}}: </strong>
+		{%- if key == 'alveo:metadata' -%}
+			<ul>
+			{%- for key2 in vars[key] -%}
+				<li><strong>{{key2}}:</strong> 
+					{% if vars[key][key2] is string and 'http' in vars[key][key2] %}
+						<a href={{vars[key][key2]}}>{{vars[key][key2]}}</a>
+					{% else %}
+						{{vars[key][key2]}}
+					{% endif %}
+				</li>
+			{%- endfor -%}
+			</ul>
+		{% elif key == 'alveo:documents' %}
+			<ul>
+			{% for key2 in vars[key] %}
+				<li>
+					<ul>
+					{% for key3 in key2 %}
+						<li><strong>{{key3}}: </strong>
+							{% if key2[key3] is string and 'http' in key2[key3] %}
+								<a href={{key2[key3]}}>{{key2[key3]}}</a>
+							{% else %}
+								{{key2[key3]}}
+							{% endif %}
+						</li>
+					{% endfor %}
+					</ul>
+				</li>
+			{% endfor %}
+			</ul>
+		{%- else -%}
+			{% if vars[key] is string and 'http' in vars[key] %}
+				<a href={{vars[key]}}>{{vars[key]}}</a></br>
+			{% else %}
+				{{vars[key]}}</br>
+			{% endif %}
+		{%- endif -%}
+	{%- endfor -%}	
+{% endblock %}
+</div>

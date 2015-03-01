@@ -1,9 +1,12 @@
 import os
-import sqlite3
+try:
+    import sqlite3
+    import redis
+except:
+    pass
 
 from rdflib import Graph
 from rdflib.term import URIRef, Literal
-import redis
 
 from namespaces import RDF, DC, LOCALTERMS
 
@@ -274,6 +277,7 @@ class ItemListFactory():
     
     def create_item_list(self, itemlistid, itemlistname, shared):
         self.db.create_item_list(itemlistid, itemlistname, shared)
+        return {"success":"Itemlist %s created successfully" % itemlistname}
         
     def add_to_item_list(self, itemlistid, itemid):
         self.db.add_to_item_list(itemlistid, itemid)

@@ -1,0 +1,26 @@
+<div>
+{% block body %}
+	Shared Item Lists:
+	<ul>
+		{% for itemlist in shared %}
+			<li>{{itemlist.name}}
+				<ul>
+					<li><strong>Number of Items:</strong> {{itemlist.num_items}}</li>
+					<li><strong>URL:</strong> <a href={{itemlist.item_list_url}}>{{itemlist.item_list_url}}</a></li>
+				</ul>
+			</li>
+		{% endfor %}
+	</ul></br>
+	Own Item Lists:
+	<ul>
+		{% for itemlist in own %}
+			<li>
+				<ul>
+					<li><strong>Number of Items:</strong> {{itemlist.num_items}}</li>
+					<li><strong>URL:</strong> <a href={{itemlist.item_list_url}}>{{itemlist.item_list_url}}</a></li>
+				</ul>
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+</div>

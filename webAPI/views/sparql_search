@@ -1,0 +1,33 @@
+<div>
+<strong>Head: </strong></br>
+<ul>
+	<li><strong>Vars: </strong>
+		<ul>
+		{% for var in head.vars %}
+			<li>{{var}}</li>
+		{% endfor %}
+		</ul>
+	</li>
+</ul>
+<strong>Results: </strong></br>
+<ul>
+	<li><strong>Bindings: </strong>
+		<ul>
+		{% for binding in results.bindings %}
+			<li>
+				<ul>
+				{% for key, value in binding.iteritems() %}
+					<li><strong>{{key}}: </strong>
+					<ul>
+						<li><strong>Type: </strong>{{value.type}}</li>
+						<li><strong>Value: </strong><a href={{value.value}}>{{value.value}}</a></li>
+					</ul>
+					</li>
+				{% endfor %}
+				</ul>
+			</li>
+		{% endfor %}
+		</ul>
+	</li>
+</ul>
+</div>

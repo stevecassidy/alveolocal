@@ -2,7 +2,7 @@
 
 import unittest
 
-from alveolocal.wsgiapp import *
+from webAPI.wsgiapp import *
 import requests
 
 
@@ -40,6 +40,23 @@ class TestWSGI(unittest.TestCase):
         
         self.assertEqual(hit, compare, "Expected the same output, got %s" % hit)
         
+    def test_1download(self):
+        headers = {"X-API-KEY": self.api_key, "Accept": "application/json"}
+        headers["content-type"] = "application/json"
+        payload = {'items':[
+                            "https://app.alveo.edu.au/catalog/cooee/2-036",
+                            "https://app.alveo.edu.au/catalog/cooee/2-037",
+                            "https://app.alveo.edu.au/catalog/cooee/2-038",
+                            "https://app.alveo.edu.au/catalog/cooee/2-040"
+                            ]}
+        answer = requests.post('https://app.alveo.edu.au/catalog/download_items', data=json.dumps(payload), headers=headers)
+        with open('temp.zip', 'wb') as f:
+            for chunk in answer.iter_content(chunk_size=1024): 
+                if chunk:
+                    f.write(chunk)
+                    f.flush()
+        pass
+    
     def test_itemlists(self):
         payload = {"name":"mylist"}
         self.make_request("local", "post", "/item_lists/229/create", payload)
@@ -152,7 +169,7 @@ class TestWSGI(unittest.TestCase):
         for key in c1:
             self.assertIn(key, h1, "Expected local output to include %s" % key)
             
-    def test_1primary_text(self):
+    def test_primary_text(self):
         url = "/catalog/cooee/1-010/primary_text"
         hit = self.make_request("local", "get", url).text[31:51]
         compare = self.make_request("online", "get", url).text[30:50]

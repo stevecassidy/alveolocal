@@ -140,8 +140,8 @@ class TestAlveolocal(unittest.TestCase):
         
         self.assertEqual(docurl, ann['commonProperties']['alveo:annotates'])
         
-        ann = self.api.get_annotations(itemuri, user="Steve.Cassidy@mq.edu.au")
-        ann = self.api.get_annotations(itemuri, priorTo=datetime.strptime("2013-12-20T12:20:00", '%Y-%m-%dT%I:%M:%S'))
+        ann = self.api.get_annotations(itemuri, {"user":"Steve.Cassidy@mq.edu.au"})
+        ann = self.api.get_annotations(itemuri, {"priorTo":datetime.strptime("2013-12-20T12:20:00", '%Y-%m-%dT%I:%M:%S')})
         
         pass
 
