@@ -321,6 +321,41 @@ def search_metadata_sparql(collection_id):
         output = json.dumps(output)
     return output
 
+@application.post('/catalog')
+def mock_create_collection():
+    print request.body.buf
+    response.content_type = 'application/json'
+    return json.dumps({"sucess":"corpus created",
+                       })
+    
+@application.put('/catalog/<collection_id>')
+def mock_update_collection(collection_id):
+    print request.body.buf
+    response.content_type = 'application/json'
+    return json.dumps({"sucess":"corpus updated",
+                       })
+    
+@application.post('/catalog/<collection_id>')
+def mock_add_items(collection_id):
+    print request.body.buf
+    response.content_type = 'application/json'
+    return json.dumps({"sucess":"item added",
+                       })
+    
+@application.post('/catalog/<collection_id>/<item_id>')
+def mock_add_documents(collection_id, item_id):
+    print request.body.buf
+    response.content_type = 'application/json'
+    return json.dumps({"sucess":"document added",
+                       })
+    
+@application.put('/catalog/<collection_id>/<item_id>')
+def mock_edit_item(collection_id, item_id):
+    print request.body.buf
+    response.content_type = 'application/json'
+    return json.dumps({"sucess":"item updated",
+                       })
+
 if __name__=='__main__':
     
     
